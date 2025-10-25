@@ -82,7 +82,7 @@ export default function GoalsSection() {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 {/* Icon with animation */}
-                <div className="mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 !whitespace-pre-line !whitespace-pre-line !w-[99.1%] !h-12 !whitespace-pre-line !whitespace-pre-line !opacity-0 !text-[10px]">
+                <div className="mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !opacity-0 !text-[10px] !w-[209px] !h-12">
                   {goal.icon}
                 </div>
                 
