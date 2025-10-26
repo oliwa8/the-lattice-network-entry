@@ -1,6 +1,5 @@
 import LatticeBackground from '@/components/LatticeBackground'
 import FloatingParticles from '@/components/FloatingParticles'
-import AmbientOrbs from '@/components/AmbientOrbs'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
 import MissionSection from '@/components/MissionSection'
@@ -17,7 +16,6 @@ export default function Home() {
   return (
     <div className="relative min-h-screen">
       <LatticeBackground />
-      <AmbientOrbs />
       <FloatingParticles />
       <Header />
       <div className="relative z-10">

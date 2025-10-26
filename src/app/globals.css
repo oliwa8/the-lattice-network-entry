@@ -1,4 +1,11 @@
 /* Updated: 2025-10-26T13:50:28.415Z */
+/* Updated: 2025-10-26T11:44:06.937Z */
+/* Updated: 2025-10-26T11:40:33.684Z */
+/* Updated: 2025-10-25T22:05:39.005Z */
+/* Updated: 2025-10-25T21:38:55.892Z */
+/* Updated: 2025-10-25T21:21:12.400Z */
+/* Updated: 2025-10-25T21:15:01.601Z */
+/* Updated: 2025-10-25T18:39:53.000Z */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -120,19 +127,17 @@
   * {
     @apply border-border outline-ring/50;
   }
+  body {
+    background: linear-gradient(180deg, var(--navy-start) 0%, var(--navy-end) 100%);
+    background-attachment: fixed;
+    color: var(--foreground);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
   
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 2rem;
-  }
-  
-  body {
-    background: #0a1b2f;
-    color: var(--foreground);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-    position: relative;
   }
   
   /* Enhanced smooth scrolling performance */
@@ -148,30 +153,6 @@
   
   *:hover {
     will-change: transform, opacity;
-  }
-  
-  /* Subtle ambient glow effect */
-  @keyframes ambient-glow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
-  
-  /* Shimmer animation for interactive elements */
-  @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  
-  /* Floating animation */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  /* Pulse glow animation */
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
-    50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.2); }
   }
 }
 

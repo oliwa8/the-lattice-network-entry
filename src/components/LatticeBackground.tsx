@@ -27,7 +27,7 @@ export default function LatticeBackground() {
 
     const resize = () => {
       canvas.width = window.innerWidth
-      canvas.height = document.documentElement.scrollHeight
+      canvas.height = window.innerHeight
       initNodes()
     }
 
@@ -48,12 +48,7 @@ export default function LatticeBackground() {
 
     const draw = () => {
       time += 0.006
-      
-      // Clear with deep navy gradient background
-      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height)
-      gradient.addColorStop(0, '#0a1b2f')
-      gradient.addColorStop(1, '#122a45')
-      ctx.fillStyle = gradient
+      ctx.fillStyle = 'rgba(10, 27, 47, 0.03)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw nodes with enhanced glow
