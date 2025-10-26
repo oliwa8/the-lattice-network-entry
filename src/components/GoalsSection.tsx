@@ -1,50 +1,54 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
 
 const goals = [
   {
     title: 'Belonging',
-    description: 'A space where curious, analytical minds find genuine connection and shared purpose.'
+    description: 'A space where curious, analytical minds find genuine connection and shared purpose.',
+    icon: '🤝',
   },
   {
     title: 'Recognition',
-    description: 'Acknowledging excellence, depth, and integrity in thought and action.'
+    description: 'Acknowledging excellence, depth, and integrity in thought and action.',
+    icon: '⭐',
   },
   {
     title: 'Collaboration',
-    description: 'Building together with clarity, intention, and mutual respect.'
+    description: 'Building together with clarity, intention, and mutual respect.',
+    icon: '🔗',
   },
   {
     title: 'Growth',
-    description: 'Continuous development through systems thinking and thoughtful discourse.'
-  }
-];
+    description: 'Continuous development through systems thinking and thoughtful discourse.',
+    icon: '📈',
+  },
+]
 
 export default function GoalsSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setIsVisible(true)
         }
       },
       { threshold: 0.1 }
-    );
+    )
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      observer.observe(sectionRef.current)
     }
 
-    return () => observer.disconnect();
-  }, []);
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-20 px-6">
+    <section ref={sectionRef} className="relative py-40 px-6">
       <div className="max-w-7xl mx-auto">
         <h2
           className={`text-4xl md:text-5xl lg:text-6xl font-light text-center mb-6 text-white transition-all duration-1000 tracking-tight ${
@@ -53,7 +57,7 @@ export default function GoalsSection() {
         >
           Our Goals
         </h2>
-        <p className={`text-center text-white/60 text-lg mb-20 max-w-2xl mx-auto transition-all duration-1000 delay-100 ${
+        <p className={`text-center text-white/60 text-lg mb-24 max-w-2xl mx-auto transition-all duration-1000 delay-100 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           Four pillars that define our community and guide our collective journey
@@ -67,17 +71,20 @@ export default function GoalsSection() {
               onMouseLeave={() => setHoveredIndex(null)}
               className={`group relative transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              } ${
-                hoveredIndex !== null && hoveredIndex !== index ? 'scale-95 opacity-60' : 'scale-100 opacity-100'
-              }`}
+              } ${hoveredIndex !== null && hoveredIndex !== index ? 'scale-95 opacity-60' : 'scale-100 opacity-100'}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-br from-white/20 to-white/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               
-              <div className="relative p-10 rounded-3xl border border-white/10 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10 h-full">
+              <div className="relative p-10 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-white/10 h-full">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
+                {/* Icon with animation */}
+                <div className="text-5xl mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                  {goal.icon}
+                </div>
                 
                 <h3 className="text-2xl md:text-3xl font-medium mb-5 text-white relative z-10 transition-colors duration-300">
                   {goal.title}
@@ -94,5 +101,5 @@ export default function GoalsSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
