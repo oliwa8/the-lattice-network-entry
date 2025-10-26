@@ -38,7 +38,7 @@ export default function ValuesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <h2
           className={`text-4xl md:text-5xl lg:text-6xl font-light text-center mb-6 text-white transition-all duration-1000 tracking-tight ${
@@ -47,7 +47,7 @@ export default function ValuesSection() {
         >
           Our Values
         </h2>
-        <p className={`text-center text-white/60 text-lg mb-24 max-w-2xl mx-auto transition-all duration-1000 delay-100 ${
+        <p className={`text-center text-white/60 text-lg mb-20 max-w-2xl mx-auto transition-all duration-1000 delay-100 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           Ten principles that shape how we think, act, and build together

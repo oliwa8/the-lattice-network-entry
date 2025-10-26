@@ -38,8 +38,8 @@ export default function LatticeBackground() {
         nodes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: (Math.random() - 0.5) * 0.2,
           pulsePhase: Math.random() * Math.PI * 2,
           baseRadius: 1.5 + Math.random() * 1,
         })
@@ -47,12 +47,12 @@ export default function LatticeBackground() {
     }
 
     const draw = () => {
-      time += 0.008
-      ctx.fillStyle = 'rgba(10, 27, 47, 0.04)'
+      time += 0.006
+      ctx.fillStyle = 'rgba(10, 27, 47, 0.03)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw nodes with enhanced glow
-      nodes.forEach((node, i) => {
+      nodes.forEach((node) => {
         node.x += node.vx
         node.y += node.vy
 

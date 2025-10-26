@@ -25,7 +25,7 @@ export default function CTASection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6">
+    <section ref={sectionRef} className="relative py-20 px-6">
       <div
         className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -54,7 +54,7 @@ export default function CTASection() {
             className="relative bg-white text-[#0a1b2f] hover:bg-white font-semibold px-16 py-8 text-xl rounded-full transition-all duration-500 hover:scale-105 shadow-2xl shadow-white/10 overflow-hidden"
             asChild
           >
-            <a href="#apply" target="_blank" rel="noopener noreferrer" className="group/btn">
+            <a href="https://tally.so/r/3E9blL" target="_blank" rel="noopener noreferrer" className="group/btn">
               {/* Animated gradient overlay */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
               
