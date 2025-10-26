@@ -5,17 +5,29 @@ import { Button } from '@/components/ui/button'
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     setIsVisible(true)
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const parallaxOffset = scrollY * 0.5
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
       <div
-        className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
+        className={`max-w-4xl mx-auto text-center transition-all duration-1000`}
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: `translateY(${isVisible ? parallaxOffset : 8}px)`
+        }}
       >
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight mb-8 text-white">
           Welcome to The Lattice

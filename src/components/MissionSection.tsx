@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 export default function MissionSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -19,16 +20,29 @@ export default function MissionSection() {
     if (sectionRef.current) {
       observer.observe(sectionRef.current)
     }
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
+
+  const parallaxOffset = (scrollY - 600) * 0.3
 
   return (
     <section ref={sectionRef} className="relative py-20 px-6">
       <div
-        className={`max-w-4xl mx-auto text-center transition-all duration-1000 delay-200 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
+        className="max-w-4xl mx-auto text-center transition-all duration-1000 delay-200"
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: `translateY(${isVisible ? parallaxOffset : 8}px)`
+        }}
       >
         <div className="mb-16 flex items-center justify-center">
           <div className="h-px w-32 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
