@@ -2,17 +2,20 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { ExternalLink } from 'lucide-react';
 
 const founders = [
 {
-  name: "Alex",
+  name: "Aleksander Nitecki",
   image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-  bio: "..."
+  bio: "...",
+  linkedin: "https://www.linkedin.com/in/alexprofile"
 },
 {
-  name: "ja",
+  name: "Oliwier Za\u0142uski",
   image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
-  bio: "..."
+  bio: "...",
+  linkedin: "https://www.linkedin.com/in/japrofile"
 }];
 
 
@@ -38,10 +41,10 @@ export default function FoundersSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6">
+    <section ref={sectionRef} className="relative py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <h2
-          className={`text-4xl md:text-5xl font-light text-center mb-20 text-white transition-all duration-1000 ${
+          className={`text-4xl md:text-5xl font-light text-center mb-16 text-white transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
           }>
 
@@ -64,15 +67,25 @@ export default function FoundersSection() {
                 className="object-cover" />
 
               </div>
-              <h3 className="text-2xl font-medium mb-4 text-white whitespace-pre-line">{founder.name}</h3>
-              <p className="text-white/80 leading-relaxed max-w-md mx-auto whitespace-pre-line">
+              <h3 className="text-2xl font-medium mb-4 text-white whitespace-pre-line !whitespace-pre-line">{founder.name}</h3>
+              <p className="text-white/80 leading-relaxed max-w-md mx-auto whitespace-pre-line mb-6">
                 {founder.bio}
               </p>
+              
+              <a
+              href={founder.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-all duration-300 text-sm font-light hover:gap-3 group">
+
+                <span>Read more</span>
+                <ExternalLink size={16} className="group-hover:scale-110 transition-transform duration-300" />
+              </a>
             </div>
           )}
         </div>
         <p
-          className={`text-center text-white/70 mt-20 max-w-2xl mx-auto transition-all duration-1000 delay-600 ${
+          className={`text-center text-white/70 mt-16 max-w-2xl mx-auto transition-all duration-1000 delay-600 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
           }>
 
