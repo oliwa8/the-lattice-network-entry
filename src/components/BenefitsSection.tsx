@@ -6,17 +6,17 @@ const benefits = [
   {
     title: 'Curated Network',
     description: 'Connect with exceptional thinkers, builders, and leaders who value depth and integrity.',
-    gradient: 'from-blue-600/30 to-cyan-600/20'
+    gradient: 'from-blue-500/20 to-cyan-500/20'
   },
   {
     title: 'Systems Mastery',
     description: 'Develop frameworks and mental models for understanding complexity in business and beyond.',
-    gradient: 'from-cyan-600/30 to-blue-500/20'
+    gradient: 'from-purple-500/20 to-pink-500/20'
   },
   {
     title: 'Intentional Growth',
     description: 'Access resources, mentorship, and opportunities designed for long-term excellence.',
-    gradient: 'from-blue-500/30 to-cyan-500/20'
+    gradient: 'from-amber-500/20 to-orange-500/20'
   }
 ];
 
@@ -71,34 +71,30 @@ export default function BenefitsSection() {
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              {/* Multi-layer blue glow */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/30 via-cyan-500/25 to-blue-600/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
-              <div className="absolute -inset-2 bg-blue-400/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              {/* Outer glow */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               
               <div className="relative h-full">
                 {/* Main card */}
-                <div className="relative p-12 rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-950/40 to-cyan-950/30 backdrop-blur-sm transition-all duration-700 hover:border-blue-400/40 hover:bg-blue-950/50 hover:shadow-2xl hover:shadow-blue-500/30 h-full overflow-hidden group-hover:-translate-y-2">
+                <div className="relative p-12 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-white/20 h-full overflow-hidden group-hover:-translate-y-2">
                   {/* Animated gradient background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-0 group-hover:opacity-100 transition-all duration-700`} />
                   
                   {/* Shimmer effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   
                   {/* Glowing border */}
-                  <div className="absolute inset-0 rounded-3xl ring-2 ring-blue-500/0 group-hover:ring-blue-400/40 transition-all duration-700" />
+                  <div className="absolute inset-0 rounded-3xl ring-2 ring-white/0 group-hover:ring-white/30 transition-all duration-700" />
                   
-                  {/* Pulse effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-blue-500/5 scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700" />
-                  
-                  <h3 className="text-2xl md:text-3xl font-medium mb-6 text-white relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:text-blue-100">
+                  <h3 className="text-2xl md:text-3xl font-medium mb-6 text-white relative z-10 transition-all duration-300 group-hover:scale-105">
                     {benefit.title}
                   </h3>
-                  <p className="text-white/70 leading-relaxed relative z-10 text-base md:text-lg transition-all duration-300 group-hover:text-white/90">
+                  <p className="text-white/70 leading-relaxed relative z-10 text-base md:text-lg">
                     {benefit.description}
                   </p>
                   
                   {/* Bottom accent */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 rounded-b-3xl" />
+                  <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-white/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 rounded-b-3xl" />
                 </div>
               </div>
             </div>

@@ -7,10 +7,8 @@ interface Particle {
   y: number
   size: number
   speedY: number
-  speedX: number
   opacity: number
   pulsePhase: number
-  hue: number
 }
 
 export default function FloatingParticles() {
@@ -34,18 +32,16 @@ export default function FloatingParticles() {
     }
 
     const initParticles = () => {
-      const particleCount = Math.floor((canvas.width * canvas.height) / 25000)
+      const particleCount = Math.floor((canvas.width * canvas.height) / 30000)
       particles = []
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2.5 + 1,
-          speedY: -Math.random() * 0.4 - 0.15,
-          speedX: (Math.random() - 0.5) * 0.2,
-          opacity: Math.random() * 0.6 + 0.3,
+          size: Math.random() * 2 + 1,
+          speedY: -Math.random() * 0.3 - 0.1,
+          opacity: Math.random() * 0.5 + 0.3,
           pulsePhase: Math.random() * Math.PI * 2,
-          hue: Math.random() * 60 + 190, // Blue to cyan range
         })
       }
     }
@@ -56,48 +52,32 @@ export default function FloatingParticles() {
 
       particles.forEach((particle) => {
         particle.y += particle.speedY
-        particle.x += particle.speedX
         
         // Reset particle when it goes off screen
         if (particle.y < -10) {
           particle.y = canvas.height + 10
           particle.x = Math.random() * canvas.width
         }
-        if (particle.x < -10 || particle.x > canvas.width + 10) {
-          particle.x = Math.random() * canvas.width
-        }
 
-        // Enhanced pulsing effect
-        const pulse = Math.sin(time * 2 + particle.pulsePhase) * 0.4 + 0.6
+        // Pulsing effect
+        const pulse = Math.sin(time * 2 + particle.pulsePhase) * 0.3 + 0.7
 
-        // Blue/cyan glow based on hue
-        const r = particle.hue < 210 ? 59 : 96
-        const g = particle.hue < 210 ? 130 : 165
-        const b = particle.hue < 210 ? 246 : 250
-
-        // Multi-layer glow
+        // Draw particle with glow
         const gradient = ctx.createRadialGradient(
           particle.x,
           particle.y,
           0,
           particle.x,
           particle.y,
-          particle.size * 4
+          particle.size * 3
         )
-        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${particle.opacity * pulse})`)
-        gradient.addColorStop(0.3, `rgba(${r}, ${g}, ${b}, ${particle.opacity * pulse * 0.6})`)
-        gradient.addColorStop(0.7, `rgba(${r}, ${g}, ${b}, ${particle.opacity * pulse * 0.3})`)
-        gradient.addColorStop(1, 'rgba(96, 165, 250, 0)')
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${particle.opacity * pulse})`)
+        gradient.addColorStop(0.5, `rgba(255, 255, 255, ${particle.opacity * pulse * 0.5})`)
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
 
         ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size * 4, 0, Math.PI * 2)
+        ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2)
         ctx.fillStyle = gradient
-        ctx.fill()
-
-        // Core particle
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${particle.opacity * pulse})`
         ctx.fill()
       })
 

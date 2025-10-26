@@ -17,40 +17,33 @@ export default function HeroSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight mb-8 text-white transition-all duration-700 hover:scale-[1.02]">
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight mb-8 text-white">
           Welcome to The Lattice
         </h1>
-        <p className="text-xl md:text-2xl font-light text-white/80 mb-16 max-w-3xl mx-auto leading-relaxed transition-all duration-700 hover:text-white/90">
+        <p className="text-xl md:text-2xl font-light text-white/80 mb-16 max-w-3xl mx-auto leading-relaxed">
           A community for young, analytical, systems-oriented minds shaping business with depth, foresight, and integrity.
         </p>
         
         <div className="relative inline-block group">
-          {/* Multi-layer blue glow */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/40 via-cyan-500/60 to-blue-500/40 rounded-full blur-2xl opacity-40 group-hover:opacity-80 transition-all duration-700 animate-pulse" />
-          <div className="absolute -inset-1 bg-blue-400/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500" />
+          <div className="absolute -inset-1 bg-gradient-to-r from-white/40 via-white/60 to-white/40 rounded-full blur-lg opacity-30 group-hover:opacity-60 transition-all duration-700 animate-pulse" />
           
-          {/* Animated expanding rings */}
-          <div className="absolute -inset-2 border border-blue-400/20 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
-          <div className="absolute -inset-3 border border-cyan-400/10 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700" />
+          <div className="absolute -inset-2 border border-white/20 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
           
           <Button
             size="lg"
-            className="relative bg-white text-[#0a1b2f] hover:bg-white font-medium px-12 py-7 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-400/40 overflow-hidden"
-            asChild>
+            className="relative bg-white text-[#0a1b2f] hover:bg-white font-medium px-12 py-7 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/30 overflow-hidden"
+            asChild
+          >
             <a href="https://tally.so/r/3E9blL" target="_blank" rel="noopener noreferrer">
-              {/* Shimmer effect */}
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              
-              {/* Radial pulse */}
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-100/0 via-cyan-200/30 to-blue-100/0 scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full" />
-              
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               <span className="relative flex items-center gap-3">
                 Apply to Join
                 <svg 
                   className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
                   fill="none" 
                   stroke="currentColor" 
-                  viewBox="0 0 24 24">
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
