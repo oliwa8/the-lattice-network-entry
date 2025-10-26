@@ -35,11 +35,11 @@ export default function WhoIsThisForSection() {
         </h2>
         
         <div
-          className={`relative p-12 md:p-16 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md transition-all duration-1000 delay-200 hover:border-white/30 hover:bg-white/10 ${
+          className={`relative p-12 md:p-16 rounded-3xl border border-white/20 backdrop-blur-md transition-all duration-1000 delay-200 hover:border-white/30 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 rounded-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-700" />
           
           <p className="text-xl md:text-2xl lg:text-3xl font-light text-white/90 leading-relaxed mb-8 relative z-10 text-center">
             The Lattice is for young, analytical, systems-oriented minds who want to shape business with depth, foresight, and integrity.

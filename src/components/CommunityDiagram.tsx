@@ -43,8 +43,8 @@ export default function CommunityDiagram() {
           The Community
         </h2>
         
-        <div className="relative p-12 rounded-3xl border border-white/30 bg-white/10 backdrop-blur-md shadow-2xl shadow-white/10">
-          <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-white/5 to-white/10 rounded-3xl" />
+        <div className="relative p-12 rounded-3xl border border-white/30 backdrop-blur-md shadow-2xl shadow-white/10">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-white/5 to-white/10 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-700" />
           
           <div
             className={`relative w-full h-[300px] transition-all duration-1000 delay-200 ${

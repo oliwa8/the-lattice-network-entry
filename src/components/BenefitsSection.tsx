@@ -76,7 +76,7 @@ export default function BenefitsSection() {
               
               <div className="relative h-full">
                 {/* Main card */}
-                <div className="relative p-12 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-white/20 h-full overflow-hidden group-hover:-translate-y-2">
+                <div className="relative p-12 rounded-3xl border border-white/10 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:shadow-2xl hover:shadow-white/20 h-full overflow-hidden group-hover:-translate-y-2">
                   {/* Animated gradient background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-0 group-hover:opacity-100 transition-all duration-700`} />
                   

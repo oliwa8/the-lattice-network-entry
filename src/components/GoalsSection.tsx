@@ -75,7 +75,7 @@ export default function GoalsSection() {
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-br from-white/20 to-white/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               
-              <div className="relative p-10 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-white/10 h-full">
+              <div className="relative p-10 rounded-3xl border border-white/10 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10 h-full">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 

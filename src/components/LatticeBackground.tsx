@@ -48,8 +48,7 @@ export default function LatticeBackground() {
 
     const draw = () => {
       time += 0.006
-      ctx.fillStyle = 'rgba(10, 27, 47, 0.03)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw nodes with enhanced glow
       nodes.forEach((node) => {
@@ -146,8 +145,7 @@ export default function LatticeBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 0 }}
+      className="fixed inset-0 pointer-events-none z-0"
     />
   )
 }

@@ -68,7 +68,7 @@ export default function ValuesSection() {
               <div className="absolute -inset-2 bg-gradient-to-br from-white/30 to-white/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               <div className="absolute -inset-1 bg-white/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-500" />
               
-              <div className="relative p-7 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-600 hover:border-white/40 hover:bg-white/15 hover:shadow-xl hover:shadow-white/20 h-full flex items-center justify-center">
+              <div className="relative p-7 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-600 hover:border-white/40 hover:shadow-xl hover:shadow-white/20 h-full flex items-center justify-center">
                 {/* Animated gradient overlay */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/15 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-600" />
                 
