@@ -64,21 +64,25 @@ export default function ValuesSection() {
               } ${hoveredIndex !== null && hoveredIndex !== index ? 'scale-90 opacity-50' : 'scale-100 opacity-100'}`}
               style={{ transitionDelay: `${index * 80}ms` }}
             >
-              {/* Multi-layer glow */}
-              <div className="absolute -inset-2 bg-gradient-to-br from-white/30 to-white/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
-              <div className="absolute -inset-1 bg-white/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              {/* Multi-layer blue glow */}
+              <div className="absolute -inset-3 bg-gradient-to-br from-blue-500/40 via-cyan-500/30 to-blue-500/40 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+              <div className="absolute -inset-2 bg-blue-400/30 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <div className="absolute -inset-1 bg-cyan-500/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-400" />
               
-              <div className="relative p-7 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-600 hover:border-white/40 hover:bg-white/15 hover:shadow-xl hover:shadow-white/20 h-full flex items-center justify-center">
+              <div className="relative p-7 rounded-2xl border border-blue-400/20 bg-gradient-to-br from-blue-950/40 to-cyan-950/30 backdrop-blur-sm transition-all duration-600 hover:border-blue-400/50 hover:bg-blue-950/50 hover:shadow-xl hover:shadow-blue-500/30 h-full flex items-center justify-center">
                 {/* Animated gradient overlay */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/15 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-600" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 via-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-600" />
                 
                 {/* Glowing ring */}
-                <div className="absolute inset-0 rounded-2xl ring-2 ring-white/0 group-hover:ring-white/30 transition-all duration-600" />
+                <div className="absolute inset-0 rounded-2xl ring-2 ring-blue-500/0 group-hover:ring-blue-400/40 transition-all duration-600" />
                 
                 {/* Pulse effect */}
-                <div className="absolute inset-0 rounded-2xl bg-white/10 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                <div className="absolute inset-0 rounded-2xl bg-blue-500/10 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-700" />
                 
-                <p className="text-center text-white font-light text-sm md:text-base lg:text-lg relative z-10 transition-all duration-300 group-hover:font-medium group-hover:tracking-wide">
+                {/* Shimmer sweep */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                
+                <p className="text-center text-white font-light text-sm md:text-base lg:text-lg relative z-10 transition-all duration-300 group-hover:font-medium group-hover:tracking-wide group-hover:text-blue-100 group-hover:scale-105">
                   {value}
                 </p>
               </div>

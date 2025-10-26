@@ -51,7 +51,7 @@ export default function LatticeBackground() {
       ctx.fillStyle = 'rgba(10, 27, 47, 0.03)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      // Update and draw nodes with enhanced glow
+      // Update and draw nodes with enhanced dark blue glow
       nodes.forEach((node) => {
         node.x += node.vx
         node.y += node.vy
@@ -70,35 +70,35 @@ export default function LatticeBackground() {
         const pulse = Math.sin(time * 1.5 + node.pulsePhase) * 0.4 + 0.6
         const glowSize = node.baseRadius + pulse * 1.5
 
-        // Multi-layer glow for depth
+        // Multi-layer dark blue glow for depth
         const gradient1 = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, glowSize * 5)
-        gradient1.addColorStop(0, `rgba(255, 255, 255, ${0.3 * pulse})`)
-        gradient1.addColorStop(0.3, `rgba(255, 255, 255, ${0.15 * pulse})`)
-        gradient1.addColorStop(0.6, `rgba(255, 255, 255, ${0.05 * pulse})`)
-        gradient1.addColorStop(1, 'rgba(255, 255, 255, 0)')
+        gradient1.addColorStop(0, `rgba(59, 130, 246, ${0.4 * pulse})`) // Blue
+        gradient1.addColorStop(0.3, `rgba(37, 99, 235, ${0.2 * pulse})`) // Darker blue
+        gradient1.addColorStop(0.6, `rgba(29, 78, 216, ${0.1 * pulse})`) // Even darker
+        gradient1.addColorStop(1, 'rgba(29, 78, 216, 0)')
         ctx.fillStyle = gradient1
         ctx.beginPath()
         ctx.arc(node.x, node.y, glowSize * 5, 0, Math.PI * 2)
         ctx.fill()
 
-        // Inner glow
+        // Inner cyan glow
         const gradient2 = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, glowSize * 2)
-        gradient2.addColorStop(0, `rgba(255, 255, 255, ${0.6 * pulse})`)
-        gradient2.addColorStop(0.5, `rgba(255, 255, 255, ${0.3 * pulse})`)
-        gradient2.addColorStop(1, 'rgba(255, 255, 255, 0)')
+        gradient2.addColorStop(0, `rgba(6, 182, 212, ${0.6 * pulse})`) // Cyan
+        gradient2.addColorStop(0.5, `rgba(8, 145, 178, ${0.3 * pulse})`) // Darker cyan
+        gradient2.addColorStop(1, 'rgba(8, 145, 178, 0)')
         ctx.fillStyle = gradient2
         ctx.beginPath()
         ctx.arc(node.x, node.y, glowSize * 2, 0, Math.PI * 2)
         ctx.fill()
 
-        // Core node
+        // Core node with blue tint
         ctx.beginPath()
         ctx.arc(node.x, node.y, glowSize, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.7 + pulse * 0.3})`
+        ctx.fillStyle = `rgba(147, 197, 253, ${0.7 + pulse * 0.3})` // Light blue
         ctx.fill()
       })
 
-      // Enhanced connections with gradient and glow
+      // Enhanced connections with blue gradient and glow
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x
@@ -106,14 +106,14 @@ export default function LatticeBackground() {
           const distance = Math.sqrt(dx * dx + dy * dy)
 
           if (distance < 180) {
-            const opacity = (1 - distance / 180) * 0.25
+            const opacity = (1 - distance / 180) * 0.3
             const pulse = Math.sin(time * 2 + i * 0.5 + j * 0.5) * 0.15 + 0.85
             
-            // Gradient line
+            // Blue gradient line
             const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y)
-            gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity * pulse})`)
-            gradient.addColorStop(0.5, `rgba(255, 255, 255, ${opacity * pulse * 1.2})`)
-            gradient.addColorStop(1, `rgba(255, 255, 255, ${opacity * pulse})`)
+            gradient.addColorStop(0, `rgba(96, 165, 250, ${opacity * pulse})`) // Light blue
+            gradient.addColorStop(0.5, `rgba(59, 130, 246, ${opacity * pulse * 1.2})`) // Blue
+            gradient.addColorStop(1, `rgba(96, 165, 250, ${opacity * pulse})`) // Light blue
             
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
@@ -122,8 +122,8 @@ export default function LatticeBackground() {
             ctx.lineWidth = 1.2
             ctx.stroke()
             
-            // Glow on connection
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * pulse * 0.3})`
+            // Cyan glow on connection
+            ctx.strokeStyle = `rgba(34, 211, 238, ${opacity * pulse * 0.4})` // Cyan
             ctx.lineWidth = 2.5
             ctx.stroke()
           }
