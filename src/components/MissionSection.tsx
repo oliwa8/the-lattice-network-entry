@@ -1,38 +1,38 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
 export default function MissionSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
       { threshold: 0.2 }
-    )
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      observer.disconnect()
-    }
-  }, [])
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-6 pt-32">
+    <section ref={sectionRef} className="relative py-24 px-6 pt-32 !w-full !h-[753px]">
       <div className="max-w-5xl mx-auto">
         <div
           className={`relative p-10 md:p-16 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+          }>
+
           <div className="space-y-12 text-center">
             <div className="space-y-6">
               <p className="text-xl md:text-2xl font-light text-white/90 leading-relaxed">
@@ -66,6 +66,6 @@ export default function MissionSection() {
           </div>
         </div>
       </div>
-    </section>
-  )
+    </section>);
+
 }
