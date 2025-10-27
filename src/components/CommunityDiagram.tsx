@@ -117,7 +117,7 @@ export default function CommunityDiagram() {
                   <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" opacity="0.3" />
                 </pattern>
               </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
+              <rect width="100%" height="100%" fill="url(#grid)" className="!w-[1053px] !h-[528px]" />
             </svg>
           </div>
 
