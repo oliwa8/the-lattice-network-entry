@@ -44,7 +44,7 @@ export default function GoalsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-6 !w-full !h-[745px]">
+    <section ref={sectionRef} className="relative py-24 px-6 !w-full !h-[647px]">
       <div className="max-w-7xl mx-auto">
         <h2
           className={`text-4xl md:text-5xl lg:text-6xl font-light text-center mb-6 text-white transition-all duration-1000 tracking-tight ${
