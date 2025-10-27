@@ -74,7 +74,7 @@ export default function CommunityDiagram() {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 !w-full !h-[982px]">
+    <section ref={sectionRef} className="relative py-32 px-6 !w-full !h-[1046px]">
       <div className="max-w-7xl mx-auto">
         <h2
           className={`text-4xl md:text-5xl lg:text-6xl font-light text-center mb-8 text-white tracking-tight transition-all duration-1000 ${
