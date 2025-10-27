@@ -11,9 +11,9 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
+    <header className="fixed top-0 left-0 right-0 z-[100] px-6 md:px-12 py-6 bg-gradient-to-b from-[#0a1b2f] via-[#0a1b2f]/80 to-transparent pointer-events-none">
       <div
-        className={`transition-all duration-1000 ease-out ${
+        className={`transition-all duration-1000 ease-out pointer-events-auto ${
           isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
         }`}
       >

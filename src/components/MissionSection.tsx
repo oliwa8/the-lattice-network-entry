@@ -26,65 +26,44 @@ export default function MissionSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-6">
-      {/* Abstract lattice pattern background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <svg className="absolute top-0 left-1/4 w-96 h-96" viewBox="0 0 300 300">
-          <path d="M50,50 L150,50 L150,150 L50,150 Z" fill="none" stroke="white" strokeWidth="0.5" />
-          <path d="M150,50 L250,50 L250,150 L150,150 Z" fill="none" stroke="white" strokeWidth="0.5" />
-          <path d="M50,150 L150,150 L150,250 L50,250 Z" fill="none" stroke="white" strokeWidth="0.5" />
-          <path d="M150,150 L250,150 L250,250 L150,250 Z" fill="none" stroke="white" strokeWidth="0.5" />
-          <line x1="50" y1="50" x2="250" y2="250" stroke="white" strokeWidth="0.3" opacity="0.5" />
-          <line x1="250" y1="50" x2="50" y2="250" stroke="white" strokeWidth="0.3" opacity="0.5" />
-        </svg>
-      </div>
+    <section ref={sectionRef} className="relative py-24 px-6 pt-32">
+      <div className="max-w-5xl mx-auto">
+        <div
+          className={`relative p-10 md:p-16 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="space-y-12 text-center">
+            <div className="space-y-6">
+              <p className="text-xl md:text-2xl font-light text-white/90 leading-relaxed">
+                We built The Lattice for those who <span className="text-white font-medium">think differently</span> — the quiet, curious builders who seek <span className="text-white font-medium">structure in complexity</span> and <span className="text-white font-medium">meaning in systems</span>.
+              </p>
+              
+              <p className="text-lg md:text-xl font-light text-white/70 leading-relaxed">
+                Our mission is to create a space where <span className="text-white/90 font-medium">rigor, integrity, and foresight</span> define the next generation of collaboration and leadership.
+              </p>
+            </div>
 
-      <div
-        className={`max-w-4xl mx-auto text-center relative z-10 transition-all duration-1000 delay-200 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-      >
-        {/* Top divider with network nodes */}
-        <div className="mb-16 flex items-center justify-center gap-2">
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/40 to-white/40" />
-          <svg width="12" height="12" viewBox="0 0 12 12">
-            <circle cx="6" cy="6" r="2" fill="white" opacity="0.4" />
-            <circle cx="6" cy="6" r="5" fill="none" stroke="white" strokeWidth="0.5" opacity="0.3" />
-          </svg>
-          <div className="h-px w-12 bg-white/30" />
-          <svg width="12" height="12" viewBox="0 0 12 12">
-            <circle cx="6" cy="6" r="2" fill="white" opacity="0.4" />
-            <circle cx="6" cy="6" r="5" fill="none" stroke="white" strokeWidth="0.5" opacity="0.3" />
-          </svg>
-          <div className="h-px w-24 bg-gradient-to-l from-transparent via-white/40 to-white/40" />
-        </div>
-        
-        <div className="space-y-10">
-          <p className="text-xl md:text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
-            We built The Lattice for those who <span className="text-white">think differently</span> — the quiet, curious builders who seek <span className="text-white">structure in complexity</span> and <span className="text-white">meaning in systems</span>.
-          </p>
-          
-          {/* Structural separator */}
-          <div className="flex items-center justify-center gap-4 py-4">
-            <div className="h-px w-16 bg-white/20" />
-            <svg width="24" height="24" viewBox="0 0 24 24">
-              <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="white" strokeWidth="0.5" opacity="0.4" />
-              <line x1="12" y1="2" x2="12" y2="22" stroke="white" strokeWidth="0.5" opacity="0.3" />
-              <line x1="2" y1="12" x2="22" y2="12" stroke="white" strokeWidth="0.5" opacity="0.3" />
-            </svg>
-            <div className="h-px w-16 bg-white/20" />
+            <div className="h-px w-32 bg-white/20 mx-auto" />
+
+            <div className="space-y-6">
+              <h3 className="text-2xl md:text-3xl font-light text-white tracking-tight">
+                Who is The Lattice for?
+              </h3>
+              
+              <p className="text-xl md:text-2xl font-light text-white/90 leading-relaxed">
+                The Lattice is for <span className="text-white font-medium">young, analytical, systems-oriented minds</span>
+              </p>
+              
+              <p className="text-xl md:text-2xl font-light text-white/90 leading-relaxed">
+                who want to shape business with <span className="text-white font-medium">depth, foresight, and integrity</span>
+              </p>
+              
+              <p className="text-lg md:text-xl font-light text-white/80 leading-relaxed italic pt-4">
+                If you've ever felt like an outsider in noisy, ego-driven spaces — <span className="text-white not-italic font-medium">this is your place.</span>
+              </p>
+            </div>
           </div>
-          
-          <p className="text-lg md:text-xl font-light text-white/70 leading-relaxed max-w-3xl mx-auto">
-            Our mission is to create a space where <span className="text-white/85">rigor, integrity, and foresight</span> define the next generation of collaboration and leadership.
-          </p>
-        </div>
-        
-        {/* Bottom divider */}
-        <div className="mt-20 flex items-center justify-center gap-3">
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/30 to-white/30" />
-          <div className="w-2 h-2 rounded-full bg-white/40" />
-          <div className="h-px w-24 bg-gradient-to-l from-transparent via-white/30 to-white/30" />
         </div>
       </div>
     </section>
