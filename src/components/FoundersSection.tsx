@@ -5,16 +5,16 @@ import Image from 'next/image';
 
 const founders = [
 {
-  name: "Oliwier Zaluski",
-  image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/profile_picture-1761525008279.jpg',
-  bio: "Systems thinker and builder focused on creating meaningful connections within business communities.",
-  linkedin: "https://www.linkedin.com/in/ozaluski/"
-},
-{
   name: "Aleksander Nitecki",
-  image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/prof-1761525012505.png',
+  image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/profile_picture-1761525008279.jpg',
   bio: "Analytical mind passionate about fostering depth, integrity, and collaborative growth.",
   linkedin: "https://www.linkedin.com/in/anitecki/"
+},
+{
+  name: "Oliwier Załuski",
+  image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/prof-1761525012505.png',
+  bio: "Systems thinker and builder focused on creating meaningful connections within business communities.",
+  linkedin: "https://www.linkedin.com/in/ozaluski/"
 }];
 
 
