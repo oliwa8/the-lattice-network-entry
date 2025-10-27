@@ -2,6 +2,7 @@ import LatticeBackground from '@/components/LatticeBackground'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
 import MissionSection from '@/components/MissionSection'
+import WhoIsThisForSection from '@/components/WhoIsThisForSection'
 import GoalsSection from '@/components/GoalsSection'
 import ValuesSection from '@/components/ValuesSection'
 import BenefitsSection from '@/components/BenefitsSection'
@@ -18,6 +19,7 @@ export default function Home() {
       <div className="relative z-10">
         <HeroSection />
         <MissionSection />
+        <WhoIsThisForSection />
         <GoalsSection />
         <ValuesSection />
         <BenefitsSection />

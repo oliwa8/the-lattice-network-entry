@@ -33,23 +33,23 @@ export default function CommunityDiagram() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6">
+    <section ref={sectionRef} className="relative py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <h2
-          className={`text-4xl md:text-5xl font-light text-center mb-20 text-white transition-all duration-1000 ${
+          className={`text-4xl md:text-5xl font-light text-center mb-16 text-white transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           The Community
         </h2>
         <div
-          className={`relative w-full h-[300px] transition-all duration-1000 delay-200 ${
+          className={`relative w-full h-[300px] bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm p-8 transition-all duration-1000 delay-200 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
           <svg className="w-full h-full" viewBox="0 0 500 250">
             {/* Draw connections */}
-            <g className="opacity-30">
+            <g className="opacity-50">
               {concepts.map((concept, i) =>
                 concepts.slice(i + 1).map((target, j) => (
                   <line
@@ -59,15 +59,15 @@ export default function CommunityDiagram() {
                     x2={target.x}
                     y2={target.y}
                     stroke="white"
-                    strokeWidth="1"
+                    strokeWidth="1.5"
                     className="transition-opacity duration-300"
                     style={{
                       opacity:
                         activeNode === null ||
                         activeNode === i ||
                         activeNode === i + j + 1
-                          ? 0.3
-                          : 0.1,
+                          ? 0.6
+                          : 0.2,
                     }}
                   />
                 ))
@@ -85,11 +85,11 @@ export default function CommunityDiagram() {
                 <circle
                   cx={concept.x}
                   cy={concept.y}
-                  r={activeNode === i ? 8 : 6}
+                  r={activeNode === i ? 10 : 8}
                   fill="white"
                   className="transition-all duration-300"
                   style={{
-                    opacity: activeNode === null || activeNode === i ? 0.9 : 0.4,
+                    opacity: activeNode === null || activeNode === i ? 1 : 0.5,
                   }}
                 />
                 <text
@@ -97,11 +97,11 @@ export default function CommunityDiagram() {
                   y={concept.y + 30}
                   textAnchor="middle"
                   fill="white"
-                  fontSize="14"
-                  fontWeight="300"
+                  fontSize="16"
+                  fontWeight="400"
                   className="transition-all duration-300 select-none"
                   style={{
-                    opacity: activeNode === null || activeNode === i ? 1 : 0.5,
+                    opacity: activeNode === null || activeNode === i ? 1 : 0.6,
                   }}
                 >
                   {concept.label}

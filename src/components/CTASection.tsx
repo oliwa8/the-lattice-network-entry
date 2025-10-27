@@ -25,7 +25,7 @@ export default function CTASection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6">
+    <section ref={sectionRef} className="relative py-32 px-6">
       <div
         className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -39,13 +39,10 @@ export default function CTASection() {
           Application opens the door to a curated community of analytical minds, meaningful collaboration, and lasting impact.
         </p>
         
-        {/* Premium CTA with layered effects */}
         <div className="relative inline-block group">
-          {/* Background glow layers */}
           <div className="absolute -inset-4 bg-gradient-to-r from-white/20 via-white/40 to-white/20 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-all duration-700" />
           <div className="absolute -inset-2 bg-white/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
           
-          {/* Animated border rings */}
           <div className="absolute -inset-3 border border-white/20 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" />
           <div className="absolute -inset-3 border border-white/10 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-1000" />
           
@@ -54,11 +51,9 @@ export default function CTASection() {
             className="relative bg-white text-[#0a1b2f] hover:bg-white font-semibold px-16 py-8 text-xl rounded-full transition-all duration-500 hover:scale-105 shadow-2xl shadow-white/10 overflow-hidden"
             asChild
           >
-            <a href="#apply" target="_blank" rel="noopener noreferrer" className="group/btn">
-              {/* Animated gradient overlay */}
+            <a href="https://tally.so/r/3E9blL" target="_blank" rel="noopener noreferrer" className="group/btn">
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
               
-              {/* Radial pulse on hover */}
               <span className="absolute inset-0 bg-gradient-to-r from-blue-100/0 via-blue-50/30 to-blue-100/0 scale-0 group-hover/btn:scale-100 transition-transform duration-700 rounded-full" />
               
               <span className="relative flex items-center gap-4">
@@ -76,7 +71,6 @@ export default function CTASection() {
           </Button>
         </div>
         
-        {/* Subtle supporting text */}
         <p className="mt-12 text-sm text-white/40 tracking-wide">
           Limited spots · Selective admission · Rolling applications
         </p>

@@ -5,20 +5,10 @@ import { Button } from '@/components/ui/button'
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     setIsVisible(true)
-    
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const parallaxOffset = scrollY * 0.5
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
@@ -26,7 +16,6 @@ export default function HeroSection() {
         className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{ transform: `translateY(${parallaxOffset}px)` }}
       >
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight mb-8 text-white">
           Welcome to The Lattice
@@ -45,7 +34,7 @@ export default function HeroSection() {
             className="relative bg-white text-[#0a1b2f] hover:bg-white font-medium px-12 py-7 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/30 overflow-hidden"
             asChild
           >
-            <a href="#apply" target="_blank" rel="noopener noreferrer">
+            <a href="https://tally.so/r/3E9blL" target="_blank" rel="noopener noreferrer">
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               <span className="relative flex items-center gap-3">
                 Apply to Join
