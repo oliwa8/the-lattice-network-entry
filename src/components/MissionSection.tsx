@@ -36,7 +36,7 @@ export default function MissionSection() {
           <div className="space-y-8 md:space-y-12 text-center">
             <div className="space-y-4 md:space-y-6">
               <p className="text-lg md:text-xl lg:text-2xl font-light text-white/90 leading-relaxed">
-                We built The Lattice for those who <span className="text-white font-medium">think differently</span> — the quiet, curious builders who seek <span className="text-white font-medium">structure in complexity</span> and <span className="text-white font-medium">meaning in systems</span>.
+                We built The Lattice for those who <span className="text-white font-medium">think differently</span> - the quiet, curious builders who seek <span className="text-white font-medium">structure in complexity</span> and <span className="text-white font-medium">meaning in systems</span>.
               </p>
               
               <p className="text-base md:text-lg lg:text-xl font-light text-white/70 leading-relaxed">
