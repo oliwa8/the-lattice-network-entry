@@ -1,69 +1,69 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
 const values = [
-  'Merit',
-  'Integrity',
-  'Curiosity',
-  'Humility',
-  'Courage',
-  'Generosity',
-  'Discipline',
-  'Openness',
-  'Excellence',
-  'Systems Thinking',
-]
+'Merit',
+'Integrity',
+'Curiosity',
+'Humility',
+'Courage',
+'Generosity',
+'Discipline',
+'Openness',
+'Excellence',
+'Systems Thinking'];
+
 
 export default function ValuesSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
       { threshold: 0.1 }
-    )
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 px-6 overflow-hidden !w-full !h-[946px]">
       <div className="max-w-7xl mx-auto">
         <h2
           className={`text-4xl md:text-5xl lg:text-6xl font-light text-center mb-6 text-white transition-all duration-1000 tracking-tight ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+          }>
+
           Our Values
         </h2>
         <p className={`text-center text-white/60 text-lg mb-20 max-w-2xl mx-auto transition-all duration-1000 delay-100 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
           Ten principles that shape how we think, act, and build together
         </p>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {values.map((value, index) => (
-            <div
-              key={value}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className={`group relative transition-all duration-600 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              } ${hoveredIndex !== null && hoveredIndex !== index ? 'scale-90 opacity-50' : 'scale-100 opacity-100'}`}
-              style={{ transitionDelay: `${index * 80}ms` }}
-            >
+          {values.map((value, index) =>
+          <div
+            key={value}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            className={`group relative transition-all duration-600 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${
+            hoveredIndex !== null && hoveredIndex !== index ? 'scale-90 opacity-50' : 'scale-100 opacity-100'}`}
+            style={{ transitionDelay: `${index * 80}ms` }}>
+
               <div className="absolute -inset-2 bg-gradient-to-br from-white/30 to-white/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               <div className="absolute -inset-1 bg-white/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-500" />
               
@@ -79,9 +79,9 @@ export default function ValuesSection() {
                 </p>
               </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  )
+    </section>);
+
 }
