@@ -59,8 +59,8 @@ export default function MissionSection() {
                 who want to shape business with <span className="text-white font-medium">depth, foresight, and integrity</span>
               </p>
               
-              <p className="text-base md:text-lg lg:text-xl font-light text-white/80 leading-relaxed italic pt-4">
-                If you've ever felt like an outsider in noisy, ego-driven spaces — <span className="text-white not-italic font-medium">this is your place.</span>
+              <p className="text-base md:text-lg lg:text-xl font-light text-white/80 leading-relaxed italic pt-4 !whitespace-pre-line">If you've ever felt like an outsider in noisy, ego-driven spaces - 
+                <span className="text-white not-italic font-medium">this is your place.</span>
               </p>
             </div>
           </div>
