@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
+
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
-import { Toaster } from "@/components/ui/sonner";
-
 export const metadata: Metadata = {
   title: "The Lattice | A Network for Analytical Minds",
   description: "A community for young, analytical, systems-oriented minds shaping business with depth, foresight, and integrity.",
@@ -31,6 +31,7 @@ export default function RootLayout({
         />
         {children}
         <Toaster />
+      
         <VisualEditsMessenger />
       </body>
     </html>
