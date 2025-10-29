@@ -30,9 +30,19 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# local env files
+# .env*.local # Removed by Orchids to allow .env files
+# .env # Removed by Orchids to allow .env files
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lock files (use npm ci in CI/CD)
+package-lock.json
+bun.lock
+yarn.lock
+pnpm-lock.yaml

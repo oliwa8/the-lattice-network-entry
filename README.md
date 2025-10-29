@@ -1,36 +1,161 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Lattice Network
 
-## Getting Started
+A sophisticated landing page for The Lattice - a community for young, analytical, systems-oriented minds shaping business with depth, foresight, and integrity.
 
-First, run the development server:
+## 🚀 Features
+
+- **Animated Lattice Background**: Dynamic canvas-based network visualization with glowing nodes
+- **Ambient Grid Animation**: Subtle drifting geometric patterns
+- **Wave Animations**: Flowing SVG waves for depth
+- **Intelligent Cursor Interactions**: Magnetic pull and dynamic highlighting (desktop)
+- **Diagonal Section Transitions**: Smooth reveal animations mirroring the lattice concept
+- **Fully Responsive**: Optimized for all devices (mobile, tablet, desktop)
+- **Performance Optimized**: Built with Next.js 15 for maximum speed
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15.3.5 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **UI Components**: Radix UI + shadcn/ui
+- **Animations**: Framer Motion
+- **Database**: Turso (SQLite)
+- **ORM**: Drizzle
+
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone <your-repo-url>
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Add your TURSO_CONNECTION_URL and TURSO_AUTH_TOKEN
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Deploy to Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Quick Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push your code to GitHub/GitLab
+2. Go to [vercel.com](https://vercel.com)
+3. Click "Import Project"
+4. Select your repository
+5. Add environment variables:
+   - `TURSO_CONNECTION_URL`
+   - `TURSO_AUTH_TOKEN`
+6. Click "Deploy"
 
-## Learn More
+### Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create these in your Vercel project settings:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+TURSO_CONNECTION_URL=your_turso_connection_url
+TURSO_AUTH_TOKEN=your_turso_auth_token
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Build Configuration
 
-## Deploy on Vercel
+Vercel will automatically detect Next.js and use these settings:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Build Command**: `npm install && npm run build`
+- **Output Directory**: `.next`
+- **Install Command**: `npm install`
+- **Development Command**: `npm run dev`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Design System
+
+- **Colors**: Deep navy gradient (#0a1b2f → #122a45)
+- **Typography**: Inter font family
+- **Style**: Minimal, futuristic, analytical
+- **Animations**: Subtle, deliberate, systems-oriented
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Homepage
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── ui/               # Reusable UI components
+│   ├── LatticeBackground.tsx
+│   ├── AmbientGrid.tsx
+│   ├── WaveAnimation.tsx
+│   ├── CursorInteraction.tsx
+│   ├── SectionTransition.tsx
+│   └── ...
+├── db/                   # Database configuration
+│   ├── index.ts         # Drizzle client
+│   └── schema.ts        # Database schema
+└── lib/                 # Utility functions
+    └── utils.ts
+```
+
+## 🔧 Development
+
+```bash
+# Development mode
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Lint code
+npm run lint
+```
+
+## ⚡ Performance Optimizations
+
+- Server Components by default
+- Image optimization with Next.js Image
+- Automatic code splitting
+- Canvas-based animations (GPU accelerated)
+- Lazy loading for sections
+- Optimized bundle size
+
+## 🐛 Troubleshooting
+
+### Build Fails on Vercel
+
+1. Check that `.npmrc` contains `legacy-peer-deps=true`
+2. Ensure no lock files are committed (package-lock.json, bun.lock)
+3. Verify environment variables are set correctly
+4. Check build logs for specific errors
+
+### Animations Not Working
+
+1. Ensure JavaScript is enabled
+2. Check browser console for errors
+3. Try clearing browser cache
+
+### Responsive Issues
+
+1. Test on actual devices, not just browser resize
+2. Check viewport meta tag in layout.tsx
+3. Verify Tailwind responsive classes are applied
+
+## 📝 License
+
+All rights reserved - The Lattice Network
+
+## 🤝 Contact
+
+- Email: [your-email]
+- Discord: [your-discord]
+- LinkedIn: [your-linkedin]
+
+---
+
+**"Truth emerges from clarity, not noise."**
