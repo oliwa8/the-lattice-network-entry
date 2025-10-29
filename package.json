@@ -9,7 +9,10 @@
         "lint": "next lint"
     },
     "dependencies": {
+<<<<<<< HEAD
         
+=======
+>>>>>>> 918ec8100a0a72296fdf23862b4d9c930f4528f8
         "@headlessui/react": "^2.2.9",
         "@heroicons/react": "^2.2.0",
         "@hookform/resolvers": "^5.1.1",
@@ -42,10 +45,16 @@
         "@radix-ui/react-tooltip": "^1.2.7",
         "@tabler/icons-react": "^3.35.0",
         "@tailwindcss/typography": "^0.5.19",
+<<<<<<< HEAD
         "atmn": "^0.0.24",
         "autumn-js": "^0.1.40",
         
         
+=======
+        "@tsparticles/engine": "^3.8.1",
+        "@tsparticles/react": "^3.0.0",
+        "@tsparticles/slim": "^3.8.1",
+>>>>>>> 918ec8100a0a72296fdf23862b4d9c930f4528f8
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "cmdk": "^1.1.1",
@@ -62,7 +71,6 @@
         "motion-dom": "^12.23.21",
         "next": "15.3.5",
         "next-themes": "^0.4.6",
-        "qss": "^3.0.0",
         "react": "^19.0.0",
         "react-day-picker": "^9.8.0",
         "react-dom": "^19.0.0",
@@ -75,7 +83,11 @@
         "react-wrap-balancer": "^1.1.1",
         "simplex-noise": "^4.0.3",
         "sonner": "^2.0.6",
+<<<<<<< HEAD
         
+=======
+        "swiper": "^12.0.2",
+>>>>>>> 918ec8100a0a72296fdf23862b4d9c930f4528f8
         "tailwind-merge": "^3.3.1",
         "tailwindcss-animate": "^1.0.7",
         "vaul": "^1.1.2",
