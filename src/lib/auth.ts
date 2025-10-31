@@ -1,3 +1,7 @@
+// TEMPORARILY COMMENTED OUT - Drizzle dependencies removed
+// Uncomment and update this file when you add a database solution
+
+/*
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { bearer } from "better-auth/plugins";
@@ -19,4 +23,11 @@ export const auth = betterAuth({
 export async function getCurrentUser(request: NextRequest) {
   const session = await auth.api.getSession({ headers: await headers() });
   return session?.user || null;
+}
+*/
+
+// Placeholder exports to prevent import errors
+export const auth = null;
+export async function getCurrentUser() {
+  return null;
 }

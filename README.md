@@ -19,8 +19,6 @@ A sophisticated landing page for The Lattice - a community for young, analytical
 - **Styling**: Tailwind CSS v4
 - **UI Components**: Radix UI + shadcn/ui
 - **Animations**: Framer Motion
-- **Database**: Turso (SQLite)
-- **ORM**: Drizzle
 
 ## 📦 Installation
 
@@ -30,10 +28,6 @@ git clone <your-repo-url>
 
 # Install dependencies
 npm install
-
-# Set up environment variables
-cp .env.example .env
-# Add your TURSO_CONNECTION_URL and TURSO_AUTH_TOKEN
 
 # Run development server
 npm run dev
@@ -47,19 +41,7 @@ npm run dev
 2. Go to [vercel.com](https://vercel.com)
 3. Click "Import Project"
 4. Select your repository
-5. Add environment variables:
-   - `TURSO_CONNECTION_URL`
-   - `TURSO_AUTH_TOKEN`
-6. Click "Deploy"
-
-### Environment Variables
-
-Create these in your Vercel project settings:
-
-```env
-TURSO_CONNECTION_URL=your_turso_connection_url
-TURSO_AUTH_TOKEN=your_turso_auth_token
-```
+5. Click "Deploy"
 
 ### Build Configuration
 
@@ -93,9 +75,6 @@ src/
 │   ├── CursorInteraction.tsx
 │   ├── SectionTransition.tsx
 │   └── ...
-├── db/                   # Database configuration
-│   ├── index.ts         # Drizzle client
-│   └── schema.ts        # Database schema
 └── lib/                 # Utility functions
     └── utils.ts
 ```
@@ -131,8 +110,7 @@ npm run lint
 
 1. Check that `.npmrc` contains `legacy-peer-deps=true`
 2. Ensure no lock files are committed (package-lock.json, bun.lock)
-3. Verify environment variables are set correctly
-4. Check build logs for specific errors
+3. Check build logs for specific errors
 
 ### Animations Not Working
 
