@@ -2,6 +2,7 @@ import LatticeBackground from '@/components/LatticeBackground'
 import AmbientGrid from '@/components/AmbientGrid'
 import WaveAnimation from '@/components/WaveAnimation'
 import CursorInteraction from '@/components/CursorInteraction'
+import NeuralNetwork from '@/components/NeuralNetwork'
 import SectionTransition from '@/components/SectionTransition'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
@@ -21,6 +22,7 @@ export default function Home() {
       <AmbientGrid />
       <WaveAnimation />
       <CursorInteraction />
+      <NeuralNetwork />
       <Header />
       <div className="relative z-10">
         <HeroSection />
