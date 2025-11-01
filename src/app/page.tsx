@@ -4,6 +4,7 @@ import WaveAnimation from '@/components/WaveAnimation'
 import CursorInteraction from '@/components/CursorInteraction'
 import NeuralNetwork from '@/components/NeuralNetwork'
 import FloatingOrbs from '@/components/FloatingOrbs'
+import DataStream from '@/components/DataStream'
 import ScrollProgress from '@/components/ScrollProgress'
 import SectionTransition from '@/components/SectionTransition'
 import Header from '@/components/Header'
@@ -23,6 +24,7 @@ export default function Home() {
       <LatticeBackground />
       <AmbientGrid />
       <WaveAnimation />
+      <DataStream />
       <CursorInteraction />
       <NeuralNetwork />
       <FloatingOrbs />

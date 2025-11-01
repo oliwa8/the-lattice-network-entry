@@ -1,28 +1,29 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import TiltCard from '@/components/TiltCard';
+import HolographicCard from '@/components/HolographicCard';
+import GeometricIcon from '@/components/GeometricIcon';
 
 const goals = [
 {
   title: 'Belonging',
   description: 'A sanctuary for the intellectually curious — where depth trumps noise and authenticity reigns.',
-  icon: '🧩'
+  icon: 'hexagon' as const
 },
 {
   title: 'Recognition',
   description: 'Celebrating the architects of insight who build with precision, think with clarity, and act with conviction.',
-  icon: '⭐'
+  icon: 'triangle' as const
 },
 {
   title: 'Collaboration',
   description: 'Co-creating the future with minds that challenge, elevate, and inspire breakthrough thinking.',
-  icon: '🤝'
+  icon: 'circle' as const
 },
 {
   title: 'Evolution',
   description: 'Continuous metamorphosis through systems thinking, rigorous discourse, and relentless curiosity.',
-  icon: '🚀'
+  icon: 'square' as const
 }];
 
 
@@ -73,24 +74,24 @@ export default function GoalsSection() {
             style={{ transitionDelay: `${index * 150}ms` }}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}>
-            <TiltCard maxTilt={12}>
+            <HolographicCard>
               <div className="group relative p-6 md:p-10 rounded-2xl md:rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-white/10 h-full">
                 <div className="absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
-                <div className="text-4xl mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12">
-                  {goal.icon}
+                <div className="flex justify-center mb-6">
+                  <GeometricIcon type={goal.icon} />
                 </div>
                 
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-medium mb-4 md:mb-5 text-white relative z-10 transition-colors duration-300">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-medium mb-4 md:mb-5 text-white relative z-10 transition-colors duration-300 text-center">
                   {goal.title}
                 </h3>
-                <p className="text-white/70 leading-relaxed relative z-10 text-sm md:text-base">
+                <p className="text-white/70 leading-relaxed relative z-10 text-sm md:text-base text-center">
                   {goal.description}
                 </p>
                 
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 rounded-b-2xl md:rounded-b-3xl" />
               </div>
-            </TiltCard>
+            </HolographicCard>
           </div>
           )}
         </div>
