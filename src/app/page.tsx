@@ -3,6 +3,8 @@ import AmbientGrid from '@/components/AmbientGrid'
 import WaveAnimation from '@/components/WaveAnimation'
 import CursorInteraction from '@/components/CursorInteraction'
 import NeuralNetwork from '@/components/NeuralNetwork'
+import FloatingOrbs from '@/components/FloatingOrbs'
+import ScrollProgress from '@/components/ScrollProgress'
 import SectionTransition from '@/components/SectionTransition'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
@@ -23,6 +25,8 @@ export default function Home() {
       <WaveAnimation />
       <CursorInteraction />
       <NeuralNetwork />
+      <FloatingOrbs />
+      <ScrollProgress />
       <Header />
       <div className="relative z-10">
         <HeroSection />

@@ -3,15 +3,15 @@
 import { useEffect, useRef, useState } from 'react';
 
 const values = [
-'Merit',
+'Excellence',
 'Integrity',
 'Curiosity',
 'Humility',
-'Courage',
+'Vision',
 'Generosity',
-'Discipline',
-'Openness',
-'Excellence',
+'Precision',
+'Adaptability',
+'Innovation',
 'Systems Thinking'];
 
 
@@ -44,13 +44,12 @@ export default function ValuesSection() {
           className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-center mb-4 md:mb-6 text-white transition-all duration-1000 tracking-tight ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
           }>
-
-          Our Values
+          Our DNA
         </h2>
         <p className={`text-center text-white/60 text-base md:text-lg mb-12 md:mb-20 max-w-2xl mx-auto transition-all duration-1000 delay-100 px-4 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
-          Ten principles that shape how we think, act, and build together
+          Ten principles that define how we think, build, and shape the future
         </p>
         
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
@@ -63,7 +62,6 @@ export default function ValuesSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${
             hoveredIndex !== null && hoveredIndex !== index ? 'scale-90 opacity-50' : 'scale-100 opacity-100'}`}
             style={{ transitionDelay: `${index * 80}ms` }}>
-
               <div className="absolute -inset-2 bg-gradient-to-br from-white/30 to-white/10 rounded-xl md:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               <div className="absolute -inset-1 bg-white/20 rounded-xl md:rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-500" />
               
@@ -74,7 +72,7 @@ export default function ValuesSection() {
                 
                 <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-white/10 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-700" />
                 
-                <p className="text-center text-white font-light text-xs sm:text-sm md:text-base lg:text-lg relative z-10 transition-all duration-300 group-hover:font-medium group-hover:tracking-wide">
+                <p className="text-center text-white font-light text-xs sm:text-sm md:text-base lg:text-lg relative z-10 transition-all duration-300 group-hover:font-medium group-hover:tracking-wide group-hover:scale-110">
                   {value}
                 </p>
               </div>
