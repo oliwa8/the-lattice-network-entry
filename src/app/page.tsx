@@ -1,4 +1,10 @@
 import LatticeBackground from '@/components/LatticeBackground'
+import AmbientGrid from '@/components/AmbientGrid'
+import WaveAnimation from '@/components/WaveAnimation'
+import DataStream from '@/components/DataStream'
+import CursorInteraction from '@/components/CursorInteraction'
+import NeuralNetwork from '@/components/NeuralNetwork'
+import FloatingOrbs from '@/components/FloatingOrbs'
 import ScrollProgress from '@/components/ScrollProgress'
 import SectionTransition from '@/components/SectionTransition'
 import Header from '@/components/Header'
@@ -16,6 +22,12 @@ export default function Home() {
   return (
     <div className="relative min-h-screen">
       <LatticeBackground />
+      <AmbientGrid />
+      <WaveAnimation />
+      <DataStream />
+      <CursorInteraction />
+      <NeuralNetwork />
+      <FloatingOrbs />
       <ScrollProgress />
       <Header />
       <div className="relative z-10">
