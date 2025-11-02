@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
+import { useAudio } from '@/components/AudioManager'
 
 interface SectionTransitionProps {
   children: React.ReactNode
@@ -15,6 +16,7 @@ export default function SectionTransition({
 }: SectionTransitionProps) {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const { playTransition } = useAudio()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,6 +25,7 @@ export default function SectionTransition({
           if (entry.isIntersecting) {
             setTimeout(() => {
               setIsVisible(true)
+              playTransition()
             }, delay)
           }
         })
@@ -39,7 +42,7 @@ export default function SectionTransition({
         observer.unobserve(sectionRef.current)
       }
     }
-  }, [delay])
+  }, [delay, playTransition])
 
   const getTransitionClasses = () => {
     const base = 'transition-all duration-1000 ease-out'

@@ -6,6 +6,7 @@ import CursorGlow from '@/components/CursorGlow';
 import TypewriterText from '@/components/TypewriterText';
 import AnimatedLogo from '@/components/AnimatedLogo';
 import TextScramble from '@/components/TextScramble';
+import { useAudio } from '@/components/AudioManager';
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,6 +14,7 @@ export default function HeroSection() {
   const [showSubtitle, setShowSubtitle] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
+  const { playType } = useAudio();
 
   useEffect(() => {
     setIsVisible(true);
@@ -104,12 +106,12 @@ export default function HeroSection() {
 
             Where{' '}
             <span className="text-white font-medium relative inline-block">
-              <TextScramble text="analytical minds" delay={200} />
+              <TextScramble text="analytical minds" delay={200} onScramble={playType} />
               <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             </span>{' '}
             converge to architect the future through{' '}
             <span className="text-white font-medium relative inline-block">
-              <TextScramble text="systems thinking" delay={800} />
+              <TextScramble text="systems thinking" delay={800} onScramble={playType} />
               <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             </span>
             , depth, and unwavering integrity.

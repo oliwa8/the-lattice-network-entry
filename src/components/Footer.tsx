@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Mail, MessageSquare } from 'lucide-react'
+import { useAudio } from '@/components/AudioManager'
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false)
   const footerRef = useRef<HTMLElement>(null)
+  const { playHover } = useAudio()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,6 +40,7 @@ export default function Footer() {
           <div className="flex items-center gap-4 md:gap-6">
             <a
               href="mailto:hello@thelattice.com"
+              onMouseEnter={playHover}
               className="text-white/70 hover:text-white transition-colors duration-400 flex items-center gap-2 hover:scale-105 text-sm md:text-base"
             >
               <Mail size={18} className="md:w-5 md:h-5" />
@@ -49,6 +52,7 @@ export default function Footer() {
               href="https://discord.gg/lattice"
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={playHover}
               className="text-white/70 hover:text-white transition-all duration-400 hover:scale-110"
               aria-label="Discord"
             >
@@ -58,6 +62,7 @@ export default function Footer() {
               href="https://linkedin.com/company/thelattice"
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={playHover}
               className="text-white/70 hover:text-white transition-all duration-400 hover:scale-110"
               aria-label="LinkedIn"
             >

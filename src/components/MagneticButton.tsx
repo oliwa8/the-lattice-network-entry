@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { useAudio } from '@/components/AudioManager'
 
 interface MagneticButtonProps {
   children: React.ReactNode
@@ -13,6 +14,7 @@ export default function MagneticButton({ children, href, className = "" }: Magne
   const buttonRef = useRef<HTMLAnchorElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
+  const { playHover, playClick } = useAudio()
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!buttonRef.current) return
@@ -32,9 +34,18 @@ export default function MagneticButton({ children, href, className = "" }: Magne
     })
   }
 
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+    playHover()
+  }
+
   const handleMouseLeave = () => {
     setIsHovered(false)
     setPosition({ x: 0, y: 0 })
+  }
+
+  const handleClick = () => {
+    playClick()
   }
 
   return (
@@ -68,8 +79,9 @@ export default function MagneticButton({ children, href, className = "" }: Magne
           target="_blank"
           rel="noopener noreferrer"
           onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovered(true)}
+          onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={handleClick}
           style={{
             transform: `translate(${position.x}px, ${position.y}px)`,
             transition: 'transform 0.2s ease-out'

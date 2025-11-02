@@ -26,7 +26,7 @@ const founders = [
 export default function FoundersSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const { playHover } = useAudio();
+  const { playHover, playFlip, playNavigate } = useAudio();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,6 +49,7 @@ export default function FoundersSection() {
   const handleHover = (index: number) => {
     setHoveredIndex(index);
     playHover();
+    playFlip();
   };
 
   return (
@@ -133,6 +134,7 @@ export default function FoundersSection() {
                     href={founder.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onMouseEnter={playNavigate}
                     className={`mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 rounded-lg text-white/80 hover:text-white text-sm font-light transition-all duration-300 group/link ${
                       hoveredIndex === index ? 'bg-white/10 border-white/30' : ''
                     }`}

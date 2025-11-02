@@ -52,7 +52,7 @@ export default function AnimatedLogo({ size = 120, className = "" }: AnimatedLog
         }`}
       >
         <Image
-          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/lattice-jest-1762042566680.png?width=8000&height=8000&resize=contain"
+          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/lattice_jest-removebg-preview-1762045680186.png?width=8000&height=8000&resize=contain"
           alt="The Lattice"
           width={size - 32}
           height={size - 32}

@@ -21,7 +21,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-4 text-white hover:opacity-80 transition-opacity">
           <div className="relative w-10 h-10 md:w-12 md:h-12">
             <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/4da6d1c5-c3d4-45cf-9d42-c4a668df18e5/visual-edit-uploads/1762045589304-5x6q1x7vf2.png"
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/lattice_jest-removebg-preview-1762045680186.png?width=8000&height=8000&resize=contain"
               alt="The Lattice Logo"
               fill
               className="object-contain"

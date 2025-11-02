@@ -13,7 +13,6 @@ export default function CTASection() {
 
   const handleApplyClick = () => {
     playSuccess();
-    // Add your apply logic here
   };
 
   return (
