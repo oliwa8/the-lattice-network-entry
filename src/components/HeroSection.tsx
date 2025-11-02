@@ -5,6 +5,7 @@ import MagneticButton from '@/components/MagneticButton'
 import CursorGlow from '@/components/CursorGlow'
 import TypewriterText from '@/components/TypewriterText'
 import AnimatedLogo from '@/components/AnimatedLogo'
+import TextScramble from '@/components/TextScramble'
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -15,6 +16,9 @@ export default function HeroSection() {
 
   useEffect(() => {
     setIsVisible(true)
+    
+    // Show subtitle after logo animation
+    const timer = setTimeout(() => setShowSubtitle(true), 3200)
 
     const handleScroll = () => {
       if (heroRef.current) {
@@ -25,7 +29,10 @@ export default function HeroSection() {
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      clearTimeout(timer)
+    }
   }, [])
 
   return (
@@ -79,12 +86,11 @@ export default function HeroSection() {
               text="The Lattice" 
               speed={100}
               delay={1600}
-              onComplete={() => setShowSubtitle(true)}
             />
           </span>
         </h1>
 
-        {/* Subtitle with Fade In After Typewriter */}
+        {/* Subtitle with Scramble Effect */}
         <div
           className={`transition-all duration-1000 ${
             showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -98,12 +104,12 @@ export default function HeroSection() {
           >
             Where{' '}
             <span className="text-white font-medium relative inline-block">
-              analytical minds
+              <TextScramble text="analytical minds" delay={200} />
               <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             </span>{' '}
             converge to architect the future through{' '}
             <span className="text-white font-medium relative inline-block">
-              systems thinking
+              <TextScramble text="systems thinking" delay={800} />
               <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             </span>
             , depth, and unwavering integrity.
@@ -111,7 +117,7 @@ export default function HeroSection() {
 
           {/* CTA Button with Delay */}
           <div 
-            className={`transition-all duration-1000 delay-500 ${
+            className={`transition-all duration-1000 delay-1000 ${
               showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{

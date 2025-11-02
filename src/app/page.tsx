@@ -17,6 +17,12 @@ import FoundersSection from '@/components/FoundersSection'
 import CommunityDiagram from '@/components/CommunityDiagram'
 import CTASection from '@/components/CTASection'
 import Footer from '@/components/Footer'
+import MagneticCursor from '@/components/MagneticCursor'
+import ParticleMorph from '@/components/ParticleMorph'
+import LiquidBlob from '@/components/LiquidBlob'
+import MouseTrail from '@/components/MouseTrail'
+import InfiniteMarquee from '@/components/InfiniteMarquee'
+import InteractiveCards from '@/components/InteractiveCards'
 
 export default function Home() {
   return (
@@ -28,13 +34,23 @@ export default function Home() {
       <CursorInteraction />
       <NeuralNetwork />
       <FloatingOrbs />
+      <ParticleMorph />
+      <LiquidBlob />
+      <MouseTrail />
+      <MagneticCursor />
       <ScrollProgress />
       <Header />
       <div className="relative z-10">
         <HeroSection />
         
+        <InfiniteMarquee />
+        
         <SectionTransition direction="diagonal-right" delay={100}>
           <MissionSection />
+        </SectionTransition>
+        
+        <SectionTransition direction="left" delay={150}>
+          <InteractiveCards />
         </SectionTransition>
         
         <SectionTransition direction="left" delay={150}>
