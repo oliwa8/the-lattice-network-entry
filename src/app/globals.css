@@ -149,33 +149,25 @@
     scroll-behavior: smooth;
   }
   
-  /* Glitch Animation Keyframes */
-  @keyframes glitch-1 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
+  /* Premium Gradient Animation */
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
   
-  @keyframes glitch-2 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(2px, -2px); }
-    40% { transform: translate(2px, 2px); }
-    60% { transform: translate(-2px, -2px); }
-    80% { transform: translate(-2px, 2px); }
-  }
-  
-  @keyframes glitch-3 {
-    0%, 100% { transform: translate(0) scaleX(1); }
-    25% { transform: translate(1px, -1px) scaleX(1.05); }
-    50% { transform: translate(-1px, 1px) scaleX(0.95); }
-    75% { transform: translate(1px, 1px) scaleX(1.02); }
+  .animate-gradient {
+    animation: gradient 8s ease infinite;
   }
   
   /* Smooth hover transitions */
   * {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Premium blur effect */
+  .backdrop-blur-premium {
+    backdrop-filter: blur(20px) saturate(180%);
   }
 }
 
