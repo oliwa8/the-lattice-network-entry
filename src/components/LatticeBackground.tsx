@@ -7,8 +7,6 @@ interface Node {
   y: number
   vx: number
   vy: number
-  pulsePhase: number
-  baseRadius: number
 }
 
 export default function LatticeBackground() {
@@ -23,7 +21,6 @@ export default function LatticeBackground() {
 
     let animationFrameId: number
     let nodes: Node[] = []
-    let time = 0
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -32,31 +29,28 @@ export default function LatticeBackground() {
     }
 
     const initNodes = () => {
-      const nodeCount = Math.floor((canvas.width * canvas.height) / 18000)
+      const nodeCount = Math.floor((canvas.width * canvas.height) / 25000)
       nodes = []
       for (let i = 0; i < nodeCount; i++) {
         nodes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
-          pulsePhase: Math.random() * Math.PI * 2,
-          baseRadius: 1.5 + Math.random() * 1,
+          vx: (Math.random() - 0.5) * 0.15,
+          vy: (Math.random() - 0.5) * 0.15,
         })
       }
     }
 
     const draw = () => {
-      time += 0.008
-      ctx.fillStyle = 'rgba(10, 27, 47, 0.04)'
+      ctx.fillStyle = 'rgba(10, 27, 47, 0.03)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      // Update and draw nodes with enhanced glow
-      nodes.forEach((node, i) => {
+      // Update and draw nodes - minimal and refined
+      nodes.forEach((node) => {
         node.x += node.vx
         node.y += node.vy
 
-        // Bounce off edges with smooth damping
+        // Bounce off edges
         if (node.x < 0 || node.x > canvas.width) {
           node.vx *= -1
           node.x = Math.max(0, Math.min(canvas.width, node.x))
@@ -66,65 +60,38 @@ export default function LatticeBackground() {
           node.y = Math.max(0, Math.min(canvas.height, node.y))
         }
 
-        // Enhanced pulsing effect
-        const pulse = Math.sin(time * 1.5 + node.pulsePhase) * 0.4 + 0.6
-        const glowSize = node.baseRadius + pulse * 1.5
-
-        // Multi-layer glow for depth
-        const gradient1 = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, glowSize * 5)
-        gradient1.addColorStop(0, `rgba(255, 255, 255, ${0.3 * pulse})`)
-        gradient1.addColorStop(0.3, `rgba(255, 255, 255, ${0.15 * pulse})`)
-        gradient1.addColorStop(0.6, `rgba(255, 255, 255, ${0.05 * pulse})`)
-        gradient1.addColorStop(1, 'rgba(255, 255, 255, 0)')
-        ctx.fillStyle = gradient1
+        // Simple subtle glow
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8)
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.15)')
+        gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)')
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
+        ctx.fillStyle = gradient
         ctx.beginPath()
-        ctx.arc(node.x, node.y, glowSize * 5, 0, Math.PI * 2)
+        ctx.arc(node.x, node.y, 8, 0, Math.PI * 2)
         ctx.fill()
 
-        // Inner glow
-        const gradient2 = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, glowSize * 2)
-        gradient2.addColorStop(0, `rgba(255, 255, 255, ${0.6 * pulse})`)
-        gradient2.addColorStop(0.5, `rgba(255, 255, 255, ${0.3 * pulse})`)
-        gradient2.addColorStop(1, 'rgba(255, 255, 255, 0)')
-        ctx.fillStyle = gradient2
+        // Core node - small and refined
         ctx.beginPath()
-        ctx.arc(node.x, node.y, glowSize * 2, 0, Math.PI * 2)
-        ctx.fill()
-
-        // Core node
-        ctx.beginPath()
-        ctx.arc(node.x, node.y, glowSize, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.7 + pulse * 0.3})`
+        ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)'
         ctx.fill()
       })
 
-      // Enhanced connections with gradient and glow
+      // Clean, simple connections
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x
           const dy = nodes[i].y - nodes[j].y
           const distance = Math.sqrt(dx * dx + dy * dy)
 
-          if (distance < 180) {
-            const opacity = (1 - distance / 180) * 0.25
-            const pulse = Math.sin(time * 2 + i * 0.5 + j * 0.5) * 0.15 + 0.85
-            
-            // Gradient line
-            const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y)
-            gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity * pulse})`)
-            gradient.addColorStop(0.5, `rgba(255, 255, 255, ${opacity * pulse * 1.2})`)
-            gradient.addColorStop(1, `rgba(255, 255, 255, ${opacity * pulse})`)
+          if (distance < 150) {
+            const opacity = (1 - distance / 150) * 0.12
             
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.strokeStyle = gradient
-            ctx.lineWidth = 1.2
-            ctx.stroke()
-            
-            // Glow on connection
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * pulse * 0.3})`
-            ctx.lineWidth = 2.5
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`
+            ctx.lineWidth = 0.8
             ctx.stroke()
           }
         }
