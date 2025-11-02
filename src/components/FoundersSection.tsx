@@ -1,27 +1,27 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { useAudio } from '@/components/AudioManager';
 
 const founders = [
-{
-  name: "Aleksander Nitecki",
-  image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/profile_picture-1761525008279.jpg',
-  bio: "Analytical mind passionate about fostering depth, integrity, and collaborative growth.",
-  linkedin: "https://www.linkedin.com/in/anitecki/"
-},
-{
-  name: "Oliwier Załuski",
-  image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/prof-1761525012505.png',
-  bio: "Systems thinker and builder focused on creating meaningful connections within business communities.",
-  linkedin: "https://www.linkedin.com/in/ozaluski/"
-}];
-
+  {
+    name: 'Alex Chen',
+    role: 'Co-Founder',
+    background: 'Systems architect with a passion for behavioral economics and networked intelligence.',
+    why: 'Built The Lattice to create a space where analytical minds can connect without the noise of status games.'
+  },
+  {
+    name: 'Jordan Park',
+    role: 'Co-Founder',
+    background: 'Strategic thinker focused on organizational design and the intersection of technology and human systems.',
+    why: 'Co-founded The Lattice to help the next generation of leaders think deeply, act with integrity, and build sustainably.'
+  }
+];
 
 export default function FoundersSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
+  const { playHover } = useAudio();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,127 +30,154 @@ export default function FoundersSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const section = document.getElementById('founders-section');
+    if (section) {
+      observer.observe(section);
     }
 
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <section ref={sectionRef} className="relative py-16 md:py-24 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2
-          className={`text-3xl md:text-4xl lg:text-5xl font-light text-center mb-12 md:mb-20 text-white transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-          }>
+  const handleHover = (index: number) => {
+    setHoveredIndex(index);
+    playHover();
+  };
 
-          Founders
+  return (
+    <section id="founders-section" className="relative py-16 md:py-24 lg:py-32 px-4 md:px-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-center mb-6 md:mb-8 text-white tracking-tight transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          The Founders
         </h2>
         
-        {/* Improved photo layout with asymmetric balance */}
-        <div className="relative flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 mb-12 md:mb-16">
-          {founders.map((founder, index) =>
-          <div
-            key={founder.name}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            className={`group relative flex flex-col items-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${
-            hoveredIndex !== null && hoveredIndex !== index ? 'scale-95 opacity-60' : 'scale-100'}`}
-            style={{
-              transitionDelay: `${(index + 1) * 200}ms`,
-            }}>
+        <p className={`text-center text-white/60 text-base md:text-lg mb-12 md:mb-20 max-w-2xl mx-auto transition-all duration-1000 delay-100 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          Together, they're building a community where thinkers, builders, and leaders can grow with depth and humility
+        </p>
 
-              {/* Decorative corner elements - hidden on mobile */}
-              <div className="hidden md:block absolute -top-4 -left-4 w-10 h-10 lg:w-12 lg:h-12 opacity-0 group-hover:opacity-30 transition-all duration-700">
-                <svg viewBox="0 0 40 40" className="w-full h-full">
-                  <path d="M0,40 L0,0 L40,0" fill="none" stroke="white" strokeWidth="1" />
-                </svg>
-              </div>
-              <div className="hidden md:block absolute -bottom-4 -right-4 w-10 h-10 lg:w-12 lg:h-12 opacity-0 group-hover:opacity-30 transition-all duration-700">
-                <svg viewBox="0 0 40 40" className="w-full h-full">
-                  <path d="M40,0 L40,40 L0,40" fill="none" stroke="white" strokeWidth="1" />
-                </svg>
-              </div>
-              
-              {/* Enhanced photo with parallax hover effect */}
-              <div className="relative mb-6 md:mb-8">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-110" />
-                
-                <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-white/20 transition-all duration-700 group-hover:border-white/50 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-white/20">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
-                  <Image
-                  src={founder.image}
-                  alt={founder.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+          {founders.map((founder, index) => (
+            <div
+              key={index}
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`group relative transition-all duration-700 delay-${(index + 2) * 100} ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
+              {/* Card with micro-interactions */}
+              <div className={`relative p-8 md:p-10 bg-white/5 rounded-2xl md:rounded-3xl border border-white/15 backdrop-blur-md transition-all duration-500 ${
+                hoveredIndex === index 
+                  ? 'bg-white/10 border-white/30 scale-[1.02] shadow-2xl shadow-white/10' 
+                  : 'hover:bg-white/8 hover:border-white/20'
+              }`}>
+                {/* Animated corner accents */}
+                <div className={`absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-white/20 rounded-tl-2xl transition-all duration-500 ${
+                  hoveredIndex === index ? 'border-white/50 w-16 h-16' : ''
+                }`} />
+                <div className={`absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-white/20 rounded-br-2xl transition-all duration-500 ${
+                  hoveredIndex === index ? 'border-white/50 w-16 h-16' : ''
+                }`} />
 
-                </div>
-                
-                {/* Orbital ring animation - hidden on mobile */}
-                <div className="hidden md:block absolute inset-0 rounded-full border border-white/10 animate-ping opacity-0 group-hover:opacity-20" style={{ animationDuration: '3s' }} />
-              </div>
-              
-              {/* Text content with structural lines */}
-              <div className="text-center max-w-sm px-4">
-                <div className="flex items-center justify-center gap-2 md:gap-3 mb-3 md:mb-4">
-                  <div className="h-px w-6 md:w-8 bg-gradient-to-r from-transparent to-white/30" />
-                  <h3 className="text-xl md:text-2xl font-medium text-white !whitespace-pre-line">{founder.name}</h3>
-                  <div className="h-px w-6 md:w-8 bg-gradient-to-l from-transparent to-white/30" />
-                </div>
-                
-                <p className="text-white/75 leading-relaxed mb-5 md:mb-6 text-sm md:text-[15px]">
-                  {founder.bio}
-                </p>
-                
-                <a
-                href={founder.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-all duration-300 text-sm group/link">
-
-                  <span className="relative">
-                    Read more
-                    <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full" />
+                {/* Profile avatar placeholder with animation */}
+                <div className={`relative w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center border-2 border-white/20 transition-all duration-500 ${
+                  hoveredIndex === index ? 'scale-110 border-white/40 shadow-lg shadow-white/20' : ''
+                }`}>
+                  <span className="text-2xl md:text-3xl font-light text-white/60 transition-all duration-500 group-hover:text-white/90">
+                    {founder.name.split(' ').map(n => n[0]).join('')}
                   </span>
-                  <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
+                  
+                  {/* Rotating ring on hover */}
+                  <div className={`absolute inset-0 rounded-full border-2 border-dashed border-white/10 transition-all duration-700 ${
+                    hoveredIndex === index ? 'animate-spin-slow opacity-100' : 'opacity-0'
+                  }`} style={{ animationDuration: '8s' }} />
+                </div>
 
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
+                <h3 className={`text-2xl md:text-3xl font-light text-white mb-2 text-center transition-all duration-500 ${
+                  hoveredIndex === index ? 'scale-105' : ''
+                }`}>
+                  {founder.name}
+                </h3>
+                
+                <p className="text-white/50 text-sm md:text-base mb-6 text-center font-light">
+                  {founder.role}
+                </p>
+
+                <div className="space-y-4">
+                  <p className={`text-white/70 text-sm md:text-base leading-relaxed transition-all duration-500 ${
+                    hoveredIndex === index ? 'text-white/90' : ''
+                  }`}>
+                    {founder.background}
+                  </p>
+                  
+                  <div className={`pt-4 border-t border-white/10 transition-all duration-500 ${
+                    hoveredIndex === index ? 'border-white/20' : ''
+                  }`}>
+                    <p className={`text-white/60 text-sm md:text-base leading-relaxed italic transition-all duration-500 ${
+                      hoveredIndex === index ? 'text-white/80 translate-x-1' : ''
+                    }`}>
+                      {founder.why}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Floating particles on hover */}
+                {hoveredIndex === index && (
+                  <>
+                    <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white/40 rounded-full animate-float-up" />
+                    <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white/40 rounded-full animate-float-up animation-delay-200" />
+                    <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-white/40 rounded-full animate-float-up animation-delay-400" />
+                  </>
+                )}
               </div>
             </div>
-          )}
-        </div>
-        
-        {/* Closing statement with geometric frame */}
-        <div className="relative px-4">
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 w-px h-6 md:h-8 bg-gradient-to-b from-white/30 to-transparent" />
-          
-          <p
-            className={`text-center text-white/70 text-sm md:text-base max-w-2xl mx-auto pt-8 md:pt-12 transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-            }>
-
-            Together, they're building a community where thinkers, builders, and leaders can grow with depth and humility.
-          </p>
-          
-          <div className="flex items-center justify-center gap-4 mt-6 md:mt-8">
-            <svg width="16" height="16" viewBox="0 0 16 16" className="opacity-30">
-              <circle cx="8" cy="8" r="3" fill="white" />
-              <circle cx="8" cy="8" r="7" fill="none" stroke="white" strokeWidth="0.5" />
-            </svg>
-          </div>
+          ))}
         </div>
       </div>
-    </section>);
 
+      <style jsx>{`
+        @keyframes float-up {
+          0% {
+            transform: translateY(0) scale(1);
+            opacity: 0.4;
+          }
+          100% {
+            transform: translateY(-40px) scale(0);
+            opacity: 0;
+          }
+        }
+
+        .animate-float-up {
+          animation: float-up 2s ease-out infinite;
+        }
+
+        .animation-delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .animation-delay-400 {
+          animation-delay: 0.4s;
+        }
+
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
+        }
+      `}</style>
+    </section>
+  );
 }

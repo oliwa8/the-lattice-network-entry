@@ -23,6 +23,7 @@ import LiquidBlob from '@/components/LiquidBlob'
 import MouseTrail from '@/components/MouseTrail'
 import InfiniteMarquee from '@/components/InfiniteMarquee'
 import InteractiveCards from '@/components/InteractiveCards'
+import AudioManager from '@/components/AudioManager'
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
       <MouseTrail />
       <MagneticCursor />
       <ScrollProgress />
+      <AudioManager />
       <Header />
       <div className="relative z-10">
         <HeroSection />
