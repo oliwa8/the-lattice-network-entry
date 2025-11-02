@@ -2,19 +2,24 @@
 
 import { useEffect, useState } from 'react';
 import { useAudio } from '@/components/AudioManager';
+import { ExternalLink } from 'lucide-react';
 
 const founders = [
   {
     name: 'Alex Chen',
-    role: 'Co-Founder',
-    background: 'Systems architect with a passion for behavioral economics and networked intelligence.',
-    why: 'Built The Lattice to create a space where analytical minds can connect without the noise of status games.'
+    role: 'Co-Founder & Systems Architect',
+    photo: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/4da6d1c5-c3d4-45cf-9d42-c4a668df18e5/generated_images/professional-corporate-headshot-portrait-a0505586-20251102002647.jpg',
+    background: 'Systems architect with a passion for behavioral economics and networked intelligence. Former strategy consultant with experience at McKinsey, focused on organizational design and complex adaptive systems.',
+    why: 'Built The Lattice to create a space where analytical minds can connect without the noise of status games. Believes in the power of structured thinking and meaningful collaboration.',
+    linkedin: 'https://linkedin.com/in/alexchen'
   },
   {
     name: 'Jordan Park',
-    role: 'Co-Founder',
-    background: 'Strategic thinker focused on organizational design and the intersection of technology and human systems.',
-    why: 'Co-founded The Lattice to help the next generation of leaders think deeply, act with integrity, and build sustainably.'
+    role: 'Co-Founder & Strategic Designer',
+    photo: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/4da6d1c5-c3d4-45cf-9d42-c4a668df18e5/generated_images/professional-corporate-headshot-portrait-0bbabd80-20251102002648.jpg',
+    background: 'Strategic thinker focused on organizational design and the intersection of technology and human systems. Background in systems engineering and behavioral science, with a focus on building sustainable communities.',
+    why: 'Co-founded The Lattice to help the next generation of leaders think deeply, act with integrity, and build sustainably. Passionate about creating spaces for genuine intellectual exchange.',
+    linkedin: 'https://linkedin.com/in/jordanpark'
   }
 ];
 
@@ -71,13 +76,11 @@ export default function FoundersSection() {
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              {/* Card with micro-interactions */}
               <div className={`relative p-8 md:p-10 bg-white/5 rounded-2xl md:rounded-3xl border border-white/15 backdrop-blur-md transition-all duration-500 ${
                 hoveredIndex === index 
                   ? 'bg-white/10 border-white/30 scale-[1.02] shadow-2xl shadow-white/10' 
                   : 'hover:bg-white/8 hover:border-white/20'
               }`}>
-                {/* Animated corner accents */}
                 <div className={`absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-white/20 rounded-tl-2xl transition-all duration-500 ${
                   hoveredIndex === index ? 'border-white/50 w-16 h-16' : ''
                 }`} />
@@ -85,15 +88,15 @@ export default function FoundersSection() {
                   hoveredIndex === index ? 'border-white/50 w-16 h-16' : ''
                 }`} />
 
-                {/* Profile avatar placeholder with animation */}
-                <div className={`relative w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center border-2 border-white/20 transition-all duration-500 ${
+                <div className={`relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/20 transition-all duration-500 ${
                   hoveredIndex === index ? 'scale-110 border-white/40 shadow-lg shadow-white/20' : ''
                 }`}>
-                  <span className="text-2xl md:text-3xl font-light text-white/60 transition-all duration-500 group-hover:text-white/90">
-                    {founder.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+                  <img 
+                    src={founder.photo} 
+                    alt={founder.name}
+                    className="w-full h-full object-cover"
+                  />
                   
-                  {/* Rotating ring on hover */}
                   <div className={`absolute inset-0 rounded-full border-2 border-dashed border-white/10 transition-all duration-700 ${
                     hoveredIndex === index ? 'animate-spin-slow opacity-100' : 'opacity-0'
                   }`} style={{ animationDuration: '8s' }} />
@@ -125,9 +128,20 @@ export default function FoundersSection() {
                       {founder.why}
                     </p>
                   </div>
+
+                  <a
+                    href={founder.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 rounded-lg text-white/80 hover:text-white text-sm font-light transition-all duration-300 group/link ${
+                      hoveredIndex === index ? 'bg-white/10 border-white/30' : ''
+                    }`}
+                  >
+                    <span>Read More</span>
+                    <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  </a>
                 </div>
 
-                {/* Floating particles on hover */}
                 {hoveredIndex === index && (
                   <>
                     <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white/40 rounded-full animate-float-up" />
