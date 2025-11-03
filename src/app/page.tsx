@@ -10,7 +10,6 @@ import SectionTransition from '@/components/SectionTransition'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
 import MissionSection from '@/components/MissionSection'
-import WhoIsThisForSection from '@/components/WhoIsThisForSection'
 import GoalsSection from '@/components/GoalsSection'
 import ValuesSection from '@/components/ValuesSection'
 import BenefitsSection from '@/components/BenefitsSection'
@@ -53,10 +52,6 @@ export default function Home() {
         </SectionTransition>
         
         <SectionTransition direction="left" delay={150}>
-          <WhoIsThisForSection />
-        </SectionTransition>
-        
-        <SectionTransition direction="right" delay={150}>
           <InteractiveCards />
         </SectionTransition>
         

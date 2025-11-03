@@ -1,8 +1,3 @@
-/* Updated: 2025-11-02T23:21:46.177Z */
-/* Updated: 2025-11-02T23:16:10.726Z */
-/* Updated: 2025-11-02T23:09:21.053Z */
-/* Updated: 2025-11-02T23:05:21.178Z */
-/* Updated: 2025-11-02T17:16:50.904Z */
 /* Updated: 2025-11-01T23:05:15.800Z */
 /* Updated: 2025-10-31T18:46:42.311Z */
 /* Updated: 2025-10-31T08:23:47.348Z */
@@ -163,29 +158,6 @@
   
   .animate-gradient {
     animation: gradient 8s ease infinite;
-  }
-  
-  /* Pulse Glow Animations for CTA */
-  @keyframes pulse-glow {
-    0%, 100% {
-      opacity: 0.5;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.05);
-    }
-  }
-
-  @keyframes pulse-glow-delayed {
-    0%, 100% {
-      opacity: 0.3;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.6;
-      transform: scale(1.08);
-    }
   }
   
   /* Smooth hover transitions */

@@ -6,7 +6,6 @@ import CursorGlow from '@/components/CursorGlow';
 import TypewriterText from '@/components/TypewriterText';
 import AnimatedLogo from '@/components/AnimatedLogo';
 import TextScramble from '@/components/TextScramble';
-import ScrollRevealText from '@/components/ScrollRevealText';
 import { useAudio } from '@/components/AudioManager';
 
 export default function HeroSection() {
@@ -93,7 +92,7 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        {/* Subtitle with Full Scramble on Load */}
+        {/* Subtitle with Scramble Effect */}
         <div
           className={`transition-all duration-1000 ${
           showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
@@ -105,14 +104,17 @@ export default function HeroSection() {
           <p
             className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/90 mb-16 md:mb-20 max-w-4xl mx-auto leading-relaxed">
 
-            <TextScramble 
-              text="Where analytical minds converge to architect the future through systems thinking, " 
-              delay={0} 
-              onScramble={playType}
-              className="text-white/90"
-            />
-            <ScrollRevealText text="depth" className="text-white font-semibold" />{', and '}
-            <ScrollRevealText text="unwavering integrity" className="text-white font-semibold" />.
+            Where{' '}
+            <span className="text-white font-medium relative inline-block">
+              <TextScramble text="analytical minds" delay={200} onScramble={playType} />
+              <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+            </span>{' '}
+            converge to architect the future through{' '}
+            <span className="text-white font-medium relative inline-block">
+              <TextScramble text="systems thinking" delay={800} onScramble={playType} />
+              <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+            </span>
+            , depth, and unwavering integrity.
           </p>
 
           {/* CTA Button with Delay */}

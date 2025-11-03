@@ -13,7 +13,6 @@ export default function CTASection() {
 
   const handleApplyClick = () => {
     playSuccess();
-    window.open('https://tally.so/r/3E9blL', '_blank');
   };
 
   return (
@@ -39,11 +38,11 @@ export default function CTASection() {
         {/* Pulsating Apply Button with gradient glow */}
         <div className="relative inline-block">
           {/* Animated gradient glow rings */}
-          <div className="absolute -inset-4 opacity-75 animate-[pulse-glow_3s_ease-in-out_infinite]">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-xl animate-gradient" />
+          <div className="absolute -inset-4 animate-pulse-glow">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-xl opacity-75 animate-gradient" />
           </div>
-          <div className="absolute -inset-2 opacity-50 animate-[pulse-glow-delayed_3s_ease-in-out_infinite]" style={{ animationDelay: '1.5s' }}>
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/40 via-blue-500/40 to-purple-500/40 rounded-full blur-lg animate-gradient" />
+          <div className="absolute -inset-2 animate-pulse-glow-delayed">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/40 via-blue-500/40 to-purple-500/40 rounded-full blur-lg opacity-50 animate-gradient" />
           </div>
           
           <button
@@ -74,6 +73,39 @@ export default function CTASection() {
           Applications are reviewed on a rolling basis
         </p>
       </div>
+
+      <style jsx>{`
+        @keyframes pulse-glow {
+          0%, 100% {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.05);
+          }
+        }
+
+        @keyframes pulse-glow-delayed {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.6;
+            transform: scale(1.08);
+          }
+        }
+
+        .animate-pulse-glow {
+          animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow-delayed {
+          animation: pulse-glow-delayed 3s ease-in-out infinite;
+          animation-delay: 1.5s;
+        }
+      `}</style>
     </section>
   );
 }
