@@ -78,22 +78,46 @@ export default function InteractiveCards() {
     {
       title: 'Depth',
       description: 'Dive beneath surface-level thinking into systems and structures',
-      icon: '🔬',
+      icon: (
+        <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="20" r="8" stroke="currentColor" strokeWidth="2.5" className="text-blue-400" />
+          <circle cx="32" cy="32" r="12" stroke="currentColor" strokeWidth="2.5" className="text-blue-300" opacity="0.7" />
+          <circle cx="32" cy="44" r="16" stroke="currentColor" strokeWidth="2.5" className="text-blue-200" opacity="0.4" />
+        </svg>
+      ),
     },
     {
       title: 'Foresight',
       description: 'Anticipate patterns and build for what comes next',
-      icon: '🔮',
+      icon: (
+        <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 8 L54 32 L32 56 L10 32 Z" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-purple-400" />
+          <circle cx="32" cy="32" r="6" fill="currentColor" className="text-purple-300" />
+          <line x1="32" y1="8" x2="32" y2="20" stroke="currentColor" strokeWidth="2" className="text-purple-400" />
+        </svg>
+      ),
     },
     {
       title: 'Integrity',
       description: 'Build with honesty, clarity, and long-term thinking',
-      icon: '⚖️',
+      icon: (
+        <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="28" y="12" width="8" height="40" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-green-400" />
+          <path d="M20 52 L32 44 L44 52" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-green-400" />
+          <circle cx="32" cy="24" r="4" fill="currentColor" className="text-green-300" />
+        </svg>
+      ),
     },
     {
       title: 'Collaboration',
       description: 'Connect with minds that challenge and elevate yours',
-      icon: '🤝',
+      icon: (
+        <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="8" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-amber-400" />
+          <circle cx="40" cy="24" r="8" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-amber-400" />
+          <path d="M24 32 Q32 40 40 32" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-amber-300" />
+        </svg>
+      ),
     },
   ]
 
