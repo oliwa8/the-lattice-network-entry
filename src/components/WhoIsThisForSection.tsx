@@ -406,6 +406,22 @@ export default function WhoIsThisForSection() {
           >
             Built for the minds who see the world differently — who think in layers, build with intention, and lead with clarity.
           </p>
+          
+          {/* Age Range & Target Audience */}
+          <div
+            className={`mt-8 flex flex-col items-center gap-3 transition-all duration-1000 delay-200 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
+              <span className="text-white/50 text-sm uppercase tracking-wider font-medium">Ages 16-30</span>
+              <span className="w-px h-4 bg-white/20"></span>
+              <span className="text-white/90 text-base">Students & Early Professionals</span>
+            </div>
+            <p className="text-white/60 text-base md:text-lg max-w-2xl">
+              Whether you're navigating university, launching your career, or building your first venture — if you think deeply and build intentionally, you belong here.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
