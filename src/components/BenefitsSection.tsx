@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import HolographicCard from '@/components/HolographicCard'
+import BenefitsCanvas from '@/components/BenefitsCanvas'
 
 const benefits = [
   {
@@ -44,8 +45,13 @@ export default function BenefitsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-16 md:py-24 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} className="relative py-16 md:py-24 px-4 md:px-6 overflow-hidden">
+      {/* Interactive Canvas Background */}
+      <div className="absolute inset-0 opacity-40">
+        <BenefitsCanvas />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <h2
           className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-center mb-4 md:mb-6 text-white transition-all duration-1000 tracking-tight ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
