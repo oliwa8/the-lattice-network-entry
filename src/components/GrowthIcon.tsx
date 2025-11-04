@@ -24,10 +24,10 @@ export default function GrowthIcon() {
 
     // Growth bars
     const bars = [
-      { x: 20, baseHeight: 20, targetHeight: 40, color: '#8b5cf6' },
-      { x: 40, baseHeight: 30, targetHeight: 55, color: '#a78bfa' },
-      { x: 60, baseHeight: 45, targetHeight: 70, color: '#c4b5fd' },
-      { x: 80, baseHeight: 60, targetHeight: 85, color: '#ddd6fe' },
+      { x: 20, baseHeight: 20, targetHeight: 40 },
+      { x: 40, baseHeight: 30, targetHeight: 55 },
+      { x: 60, baseHeight: 45, targetHeight: 70 },
+      { x: 80, baseHeight: 60, targetHeight: 85 },
     ]
 
     let time = 0
@@ -44,24 +44,25 @@ export default function GrowthIcon() {
 
         // Bar shadow
         ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'
-        ctx.fillRect(bar.x + 2, y + 2, width, currentHeight)
+        ctx.fillRect(bar.x + 1, y + 1, width, currentHeight)
 
         // Bar gradient
+        const opacity = isHovered ? 0.7 - (i * 0.1) : 0.5 - (i * 0.08)
         const gradient = ctx.createLinearGradient(bar.x, y, bar.x, y + currentHeight)
-        gradient.addColorStop(0, bar.color)
-        gradient.addColorStop(1, isHovered ? '#6d28d9' : '#7c3aed')
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`)
+        gradient.addColorStop(1, `rgba(255, 255, 255, ${opacity * 0.6})`)
         ctx.fillStyle = gradient
         ctx.fillRect(bar.x, y, width, currentHeight)
 
         // Bar border
-        ctx.strokeStyle = isHovered ? 'rgba(255, 255, 255, 0.6)' : 'rgba(255, 255, 255, 0.3)'
-        ctx.lineWidth = 2
+        ctx.strokeStyle = isHovered ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.25)'
+        ctx.lineWidth = 1.5
         ctx.strokeRect(bar.x, y, width, currentHeight)
 
         // Shine effect
         const shineGradient = ctx.createLinearGradient(bar.x, y, bar.x + width, y)
         shineGradient.addColorStop(0, 'rgba(255, 255, 255, 0)')
-        shineGradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.3)')
+        shineGradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)')
         shineGradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
         ctx.fillStyle = shineGradient
         ctx.fillRect(bar.x, y, width, currentHeight)
@@ -72,8 +73,8 @@ export default function GrowthIcon() {
             bar.x + width / 2, y, 0,
             bar.x + width / 2, y, 20
           )
-          glowGradient.addColorStop(0, 'rgba(168, 85, 247, 0.8)')
-          glowGradient.addColorStop(1, 'rgba(168, 85, 247, 0)')
+          glowGradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)')
+          glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
           ctx.fillStyle = glowGradient
           ctx.beginPath()
           ctx.arc(bar.x + width / 2, y, 20, 0, Math.PI * 2)
@@ -83,9 +84,9 @@ export default function GrowthIcon() {
         // Particle effect when hovering
         if (isHovered && Math.random() > 0.7) {
           const particleY = y + Math.random() * currentHeight
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'
           ctx.beginPath()
-          ctx.arc(bar.x + width / 2, particleY, 2, 0, Math.PI * 2)
+          ctx.arc(bar.x + width / 2, particleY, 1.5, 0, Math.PI * 2)
           ctx.fill()
         }
       })
@@ -93,8 +94,8 @@ export default function GrowthIcon() {
       // Arrow at the top
       if (isHovered) {
         const arrowY = 10 - Math.sin(time * 2) * 3
-        ctx.strokeStyle = '#a78bfa'
-        ctx.lineWidth = 3
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)'
+        ctx.lineWidth = 2.5
         ctx.lineCap = 'round'
         ctx.lineJoin = 'round'
         

@@ -39,8 +39,8 @@ export default function NetworkIcon() {
       time += 0.02
 
       // Draw connections
-      ctx.strokeStyle = isHovered ? 'rgba(147, 197, 253, 0.6)' : 'rgba(147, 197, 253, 0.3)'
-      ctx.lineWidth = isHovered ? 2 : 1
+      ctx.strokeStyle = isHovered ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.2)'
+      ctx.lineWidth = isHovered ? 1.5 : 1
       
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -56,26 +56,26 @@ export default function NetworkIcon() {
 
       // Draw nodes with pulse effect
       nodes.forEach((node, i) => {
-        const pulse = isHovered ? Math.sin(time * 2 + node.angle) * 0.5 + 1 : 1
+        const pulse = isHovered ? Math.sin(time * 2 + node.angle) * 0.3 + 1 : 1
         const radius = node.radius * pulse
         
         // Outer glow
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, radius * 3)
-        gradient.addColorStop(0, isHovered ? 'rgba(59, 130, 246, 0.8)' : 'rgba(59, 130, 246, 0.4)')
-        gradient.addColorStop(1, 'rgba(59, 130, 246, 0)')
+        gradient.addColorStop(0, isHovered ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.15)')
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
         ctx.fillStyle = gradient
         ctx.beginPath()
         ctx.arc(node.x, node.y, radius * 3, 0, Math.PI * 2)
         ctx.fill()
 
         // Node core
-        ctx.fillStyle = isHovered ? '#60a5fa' : '#3b82f6'
+        ctx.fillStyle = isHovered ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.6)'
         ctx.beginPath()
         ctx.arc(node.x, node.y, radius, 0, Math.PI * 2)
         ctx.fill()
 
         // Inner highlight
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)'
         ctx.beginPath()
         ctx.arc(node.x - radius * 0.3, node.y - radius * 0.3, radius * 0.4, 0, Math.PI * 2)
         ctx.fill()

@@ -46,8 +46,8 @@ export default function CollaborationIcon() {
 
         // Energy particle
         const particleGradient = ctx.createRadialGradient(currentX, circleY, 0, currentX, circleY, 8)
-        particleGradient.addColorStop(0, 'rgba(34, 211, 238, 1)')
-        particleGradient.addColorStop(1, 'rgba(34, 211, 238, 0)')
+        particleGradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)')
+        particleGradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
         ctx.fillStyle = particleGradient
         ctx.beginPath()
         ctx.arc(currentX, circleY, 8, 0, Math.PI * 2)
@@ -55,8 +55,8 @@ export default function CollaborationIcon() {
       }
 
       // Connection line
-      ctx.strokeStyle = isHovered ? 'rgba(34, 211, 238, 0.6)' : 'rgba(34, 211, 238, 0.3)'
-      ctx.lineWidth = isHovered ? 3 : 2
+      ctx.strokeStyle = isHovered ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.2)'
+      ctx.lineWidth = isHovered ? 2.5 : 2
       ctx.beginPath()
       ctx.moveTo(circle1X + radius, circleY)
       ctx.lineTo(circle2X - radius, circleY)
@@ -66,8 +66,8 @@ export default function CollaborationIcon() {
       const drawCircle = (x: number, y: number) => {
         // Outer glow
         const glowGradient = ctx.createRadialGradient(x, y, radius, x, y, radius * 2)
-        glowGradient.addColorStop(0, isHovered ? 'rgba(34, 211, 238, 0.4)' : 'rgba(34, 211, 238, 0.2)')
-        glowGradient.addColorStop(1, 'rgba(34, 211, 238, 0)')
+        glowGradient.addColorStop(0, isHovered ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.1)')
+        glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
         ctx.fillStyle = glowGradient
         ctx.beginPath()
         ctx.arc(x, y, radius * 2, 0, Math.PI * 2)
@@ -75,20 +75,20 @@ export default function CollaborationIcon() {
 
         // Circle fill
         const fillGradient = ctx.createRadialGradient(x - radius * 0.3, y - radius * 0.3, 0, x, y, radius)
-        fillGradient.addColorStop(0, isHovered ? '#67e8f9' : '#22d3ee')
-        fillGradient.addColorStop(1, isHovered ? '#22d3ee' : '#06b6d4')
+        fillGradient.addColorStop(0, isHovered ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.5)')
+        fillGradient.addColorStop(1, isHovered ? 'rgba(255, 255, 255, 0.6)' : 'rgba(255, 255, 255, 0.3)')
         ctx.fillStyle = fillGradient
         ctx.beginPath()
         ctx.arc(x, y, radius, 0, Math.PI * 2)
         ctx.fill()
 
         // Circle border
-        ctx.strokeStyle = isHovered ? 'rgba(255, 255, 255, 0.6)' : 'rgba(255, 255, 255, 0.3)'
-        ctx.lineWidth = 2
+        ctx.strokeStyle = isHovered ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 255, 255, 0.25)'
+        ctx.lineWidth = 1.5
         ctx.stroke()
 
         // Highlight
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'
         ctx.beginPath()
         ctx.arc(x - radius * 0.4, y - radius * 0.4, radius * 0.3, 0, Math.PI * 2)
         ctx.fill()
