@@ -3,22 +3,25 @@
 import { useEffect, useRef, useState } from 'react'
 import HolographicCard from '@/components/HolographicCard'
 import BenefitsCanvas from '@/components/BenefitsCanvas'
+import NetworkIcon from '@/components/NetworkIcon'
+import CollaborationIcon from '@/components/CollaborationIcon'
+import GrowthIcon from '@/components/GrowthIcon'
 
 const benefits = [
   {
     title: 'Elite Network',
     description: 'Connect with carefully curated peers who value depth, integrity, and systems-level thinking.',
-    icon: '◆'
+    icon: NetworkIcon
   },
   {
     title: 'Meaningful Collaboration',
     description: 'Work alongside ambitious builders on projects that create lasting impact.',
-    icon: '◇'
+    icon: CollaborationIcon
   },
   {
     title: 'Continuous Growth',
     description: 'Access exclusive workshops, discussions, and resources designed for analytical minds.',
-    icon: '◈'
+    icon: GrowthIcon
   },
 ]
 
@@ -81,8 +84,8 @@ export default function BenefitsSection() {
                   <div className="relative p-8 md:p-12 rounded-2xl md:rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-700 hover:border-white/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-white/20 h-full overflow-hidden md:group-hover:-translate-y-2">
                     <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     
-                    <div className="text-white/60 mb-6 transition-all duration-500 group-hover:text-white text-center text-4xl md:text-5xl">
-                      {benefit.icon}
+                    <div className="mb-6 transition-all duration-500">
+                      <benefit.icon />
                     </div>
                     
                     <h3 className="text-xl md:text-2xl font-medium mb-4 md:mb-6 text-white relative z-10 transition-all duration-300 md:group-hover:scale-105 text-center">
