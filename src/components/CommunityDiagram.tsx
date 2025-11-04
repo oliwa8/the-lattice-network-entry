@@ -150,7 +150,7 @@ export default function CommunityDiagram() {
           ref={containerRef}
           onMouseMove={handleMouseMove}
           onTouchMove={handleTouchMove}
-          className={`relative w-full aspect-[16/10] sm:aspect-[2/1] bg-white/5 rounded-2xl md:rounded-3xl border border-white/15 backdrop-blur-md p-4 md:p-8 transition-all duration-1000 delay-200 overflow-hidden ${
+          className={`relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[2/1] bg-white/5 rounded-2xl md:rounded-3xl border border-white/15 backdrop-blur-md p-6 md:p-8 transition-all duration-1000 delay-200 overflow-hidden ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
@@ -291,7 +291,7 @@ export default function CommunityDiagram() {
                 y={easterEggNode.y * 100 + 0.7}
                 textAnchor="middle"
                 fill={easterEggFound ? 'white' : 'rgba(255, 255, 255, 0.5)'}
-                fontSize={easterEggFound ? "2" : "1.5"}
+                fontSize={isMobile ? "2.5" : (easterEggFound ? "2" : "1.5")}
                 fontWeight="600"
                 opacity={easterEggFound ? 1 : 0.6}
                 className="transition-all duration-500 select-none pointer-events-none"
@@ -304,8 +304,8 @@ export default function CommunityDiagram() {
             {concepts.map((concept, i) => {
               const mouseDistance = isMobile ? 100 : Math.hypot((mousePos.x - concept.x) * 100, (mousePos.y - concept.y) * 100);
               const proximity = Math.max(0, 1 - mouseDistance / 20);
-              const baseSize = 2;
-              const hoverSize = activeNode === i ? 3 : baseSize + proximity * 1;
+              const baseSize = isMobile ? 2.5 : 2;
+              const hoverSize = activeNode === i ? (isMobile ? 3.5 : 3) : baseSize + proximity * 1;
               const pulseScale = isMobile ? 1 : 1 + Math.sin(timeRef.current * 2 + i) * 0.1;
 
               return (
@@ -379,10 +379,10 @@ export default function CommunityDiagram() {
                   
                   <text
                     x={concept.x * 100}
-                    y={concept.y * 100 + hoverSize + 5}
+                    y={concept.y * 100 + hoverSize + (isMobile ? 6 : 5)}
                     textAnchor="middle"
                     fill="white"
-                    fontSize={activeNode === i ? "3" : "2.5"}
+                    fontSize={isMobile ? "3.5" : (activeNode === i ? "3" : "2.5")}
                     fontWeight={activeNode === i ? "500" : "400"}
                     opacity={activeNode === null || activeNode === i ? 1 : 0.7}
                     className="transition-all duration-500 select-none pointer-events-none"
@@ -396,13 +396,13 @@ export default function CommunityDiagram() {
 
           {/* Philosophy Quote Overlay */}
           {showQuote && (
-            <div className="absolute inset-0 flex items-center justify-center p-8 bg-[#0a1b2f]/80 backdrop-blur-sm animate-in fade-in duration-500">
+            <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 bg-[#0a1b2f]/80 backdrop-blur-sm animate-in fade-in duration-500">
               <div className="max-w-xl text-center">
-                <div className="text-6xl mb-4 opacity-20">"</div>
-                <p className="text-xl md:text-2xl text-white font-light leading-relaxed italic">
+                <div className="text-4xl md:text-6xl mb-4 opacity-20">"</div>
+                <p className="text-lg md:text-xl lg:text-2xl text-white font-light leading-relaxed italic px-2">
                   {currentQuote}
                 </p>
-                <div className="text-6xl mt-4 opacity-20 rotate-180">"</div>
+                <div className="text-4xl md:text-6xl mt-4 opacity-20 rotate-180">"</div>
               </div>
             </div>
           )}

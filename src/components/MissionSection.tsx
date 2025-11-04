@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import InteractiveConstellation from '@/components/InteractiveConstellation';
+import ParticleCanvas from '@/components/ParticleCanvas';
 
 export default function MissionSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -48,16 +48,18 @@ export default function MissionSection() {
           <p className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-white/80 text-center mb-8 px-4">
             Our mission is to forge a space where <span className="text-white font-medium">rigor, integrity, and foresight</span> define the architects of tomorrow.
           </p>
-          <p className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-white/80 text-center px-4">
+          <p className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-white/80 text-center px-4 mb-12">
             Designed for students and early professionals aged 16-30, The Lattice is a refuge from ego-driven spaces. A place where integrity replaces performance, and systems thinkers can grow with depth and purpose.
           </p>
         </div>
         
         <div
-          className={`mt-12 md:mt-16 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+          className={`transition-all duration-1000 delay-200 ${
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
-        />
+        >
+          <ParticleCanvas />
+        </div>
       </div>
     </section>
   );
