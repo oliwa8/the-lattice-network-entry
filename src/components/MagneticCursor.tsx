@@ -1,46 +1,19 @@
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useEffect, useState } from 'react';
 
 export default function MagneticCursor() {
-  const cursorX = useMotionValue(0)
-  const cursorY = useMotionValue(0)
-  
-  const springConfig = { damping: 25, stiffness: 200 }
-  const cursorXSpring = useSpring(cursorX, springConfig)
-  const cursorYSpring = useSpring(cursorY, springConfig)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 20)
-      cursorY.set(e.clientY - 20)
-    }
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    window.addEventListener('mousemove', moveCursor)
-    return () => window.removeEventListener('mousemove', moveCursor)
-  }, [cursorX, cursorY])
+  // Disable on mobile (no cursor on touch devices)
+  if (isMobile) return null;
 
-  return (
-    <>
-      <motion.div
-        className="fixed w-10 h-10 pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          left: cursorXSpring,
-          top: cursorYSpring,
-        }}
-      >
-        <div className="w-full h-full rounded-full border-2 border-white" />
-      </motion.div>
-      <motion.div
-        className="fixed w-2 h-2 pointer-events-none z-[9999] bg-white rounded-full"
-        style={{
-          left: cursorX,
-          top: cursorY,
-          x: 9,
-          y: 9,
-        }}
-      />
-    </>
-  )
+  return null; // This component can be fully disabled for performance
 }

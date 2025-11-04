@@ -1,80 +1,49 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react';
 
 export default function WaveAnimation() {
-  const svgRef = useRef<SVGSVGElement>(null)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const svg = svgRef.current
-    if (!svg) return
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    const path1 = svg.querySelector('#wave-1') as SVGPathElement
-    const path2 = svg.querySelector('#wave-2') as SVGPathElement
-    const path3 = svg.querySelector('#wave-3') as SVGPathElement
+  // Simplify on mobile for performance
+  return (
+    <div className="fixed bottom-0 left-0 right-0 h-32 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
+      <div className={`absolute inset-0 bg-gradient-to-t from-white/5 to-transparent ${isMobile ? '' : 'animate-wave'}`} />
+      
+      {!isMobile && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-t from-white/3 to-transparent animate-wave-slow" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/2 to-transparent animate-wave-slower" />
+        </>
+      )}
 
-    if (!path1 || !path2 || !path3) return
-
-    let time = 0
-    let animationFrameId: number
-
-    const animate = () => {
-      time += 0.003
-
-      // Create slow, flowing wave paths
-      const createWavePath = (offset: number, amplitude: number) => {
-        const width = window.innerWidth
-        const height = window.innerHeight
-        let path = `M 0 ${height / 2}`
-
-        for (let x = 0; x <= width; x += 20) {
-          const y = Math.sin((x / 200) + time + offset) * amplitude + height / 2
-          path += ` L ${x} ${y}`
+      <style jsx>{`
+        @keyframes wave {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
         }
 
-        path += ` L ${width} ${height} L 0 ${height} Z`
-        return path
-      }
+        @keyframes wave-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
+        }
 
-      path1.setAttribute('d', createWavePath(0, 50))
-      path2.setAttribute('d', createWavePath(1, 60))
-      path3.setAttribute('d', createWavePath(2, 40))
+        @keyframes wave-slower {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
 
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    animate()
-
-    return () => {
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [])
-
-  return (
-    <svg
-      ref={svgRef}
-      className="fixed inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 1 }}
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.02)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-        </linearGradient>
-        <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.015)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-        </linearGradient>
-        <linearGradient id="wave-gradient-3" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.01)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-        </linearGradient>
-      </defs>
-
-      <path id="wave-1" fill="url(#wave-gradient-1)" />
-      <path id="wave-2" fill="url(#wave-gradient-2)" />
-      <path id="wave-3" fill="url(#wave-gradient-3)" />
-    </svg>
-  )
+        .animate-wave { animation: wave 8s ease-in-out infinite; }
+        .animate-wave-slow { animation: wave-slow 12s ease-in-out infinite; }
+        .animate-wave-slower { animation: wave-slower 16s ease-in-out infinite; }
+      `}</style>
+    </div>
+  );
 }

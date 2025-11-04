@@ -10,7 +10,6 @@ import SectionTransition from '@/components/SectionTransition'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
 import MissionSection from '@/components/MissionSection'
-import GoalsSection from '@/components/GoalsSection'
 import ValuesSection from '@/components/ValuesSection'
 import BenefitsSection from '@/components/BenefitsSection'
 import FoundersSection from '@/components/FoundersSection'
@@ -22,7 +21,6 @@ import ParticleMorph from '@/components/ParticleMorph'
 import LiquidBlob from '@/components/LiquidBlob'
 import MouseTrail from '@/components/MouseTrail'
 import InfiniteMarquee from '@/components/InfiniteMarquee'
-import InteractiveCards from '@/components/InteractiveCards'
 import AudioManager from '@/components/AudioManager'
 
 export default function Home() {
@@ -49,14 +47,6 @@ export default function Home() {
         
         <SectionTransition direction="diagonal-right" delay={100}>
           <MissionSection />
-        </SectionTransition>
-        
-        <SectionTransition direction="left" delay={150}>
-          <InteractiveCards />
-        </SectionTransition>
-        
-        <SectionTransition direction="left" delay={150}>
-          <GoalsSection />
         </SectionTransition>
         
         <SectionTransition direction="diagonal-left" delay={200}>

@@ -1,81 +1,48 @@
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react';
 
 export default function LiquidBlob() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    canvas.width = 600
-    canvas.height = 600
-
-    let time = 0
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
-      const radius = 150
-
-      // Create blob shape
-      ctx.beginPath()
-      
-      for (let i = 0; i <= 360; i += 1) {
-        const angle = (i * Math.PI) / 180
-        const offsetX = Math.sin(angle * 3 + time) * 30
-        const offsetY = Math.cos(angle * 5 + time) * 30
-        const x = centerX + Math.cos(angle) * (radius + offsetX)
-        const y = centerY + Math.sin(angle) * (radius + offsetY)
-
-        if (i === 0) {
-          ctx.moveTo(x, y)
-        } else {
-          ctx.lineTo(x, y)
-        }
-      }
-
-      ctx.closePath()
-
-      // Gradient fill
-      const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius)
-      gradient.addColorStop(0, 'rgba(99, 102, 241, 0.3)')
-      gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.2)')
-      gradient.addColorStop(1, 'rgba(236, 72, 153, 0.1)')
-      
-      ctx.fillStyle = gradient
-      ctx.fill()
-
-      // Glow effect
-      ctx.shadowBlur = 40
-      ctx.shadowColor = 'rgba(99, 102, 241, 0.5)'
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'
-      ctx.lineWidth = 2
-      ctx.stroke()
-
-      time += 0.01
-      requestAnimationFrame(animate)
-    }
-
-    animate()
-  }, [])
+  // Disable on mobile for performance
+  if (isMobile) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[1] opacity-20">
-      <canvas
-        ref={canvasRef}
-        className="absolute"
-        style={{
-          filter: 'blur(40px)',
-          mixBlendMode: 'screen'
-        }}
-      />
+    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-full blur-3xl animate-blob-slow opacity-50" />
+
+      <style jsx>{`
+        @keyframes blob-slow {
+          0%, 100% {
+            transform: translate(-50%, 0) scale(1);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+          }
+          25% {
+            transform: translate(-50%, -20px) scale(1.05);
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+          }
+          50% {
+            transform: translate(-50%, 0) scale(0.95);
+            border-radius: 70% 30% 50% 50% / 30% 70% 50% 60%;
+          }
+          75% {
+            transform: translate(-50%, 20px) scale(1.02);
+            border-radius: 40% 70% 30% 60% / 70% 50% 60% 30%;
+          }
+        }
+
+        .animate-blob-slow {
+          animation: blob-slow 30s ease-in-out infinite;
+        }
+      `}</style>
     </div>
-  )
+  );
 }

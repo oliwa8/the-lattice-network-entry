@@ -1,120 +1,102 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from 'react'
-
-interface Node {
-  x: number
-  y: number
-  vx: number
-  vy: number
-}
+import { useEffect, useRef, useState } from 'react';
 
 export default function LatticeBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    let animationFrameId: number
-    let nodes: Node[] = []
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      initNodes()
+    let animationFrameId: number;
+    let time = 0;
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Reduce node count on mobile for performance
+    const nodeCount = isMobile ? 20 : 40;
+    const nodes: { x: number; y: number; vx: number; vy: number }[] = [];
+
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5),
+        vy: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5),
+      });
     }
 
-    const initNodes = () => {
-      const nodeCount = Math.floor((canvas.width * canvas.height) / 25000)
-      nodes = []
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.15,
-          vy: (Math.random() - 0.5) * 0.15,
-        })
-      }
-    }
+    const animate = () => {
+      ctx.fillStyle = 'rgba(10, 27, 47, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    const draw = () => {
-      ctx.fillStyle = 'rgba(10, 27, 47, 0.03)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      time += 0.005;
 
-      // Update and draw nodes - minimal and refined
-      nodes.forEach((node) => {
-        node.x += node.vx
-        node.y += node.vy
+      nodes.forEach((node, i) => {
+        node.x += node.vx;
+        node.y += node.vy;
 
-        // Bounce off edges
-        if (node.x < 0 || node.x > canvas.width) {
-          node.vx *= -1
-          node.x = Math.max(0, Math.min(canvas.width, node.x))
-        }
-        if (node.y < 0 || node.y > canvas.height) {
-          node.vy *= -1
-          node.y = Math.max(0, Math.min(canvas.height, node.y))
-        }
+        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
 
-        // Simple subtle glow
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8)
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.15)')
-        gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)')
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
-        ctx.fillStyle = gradient
-        ctx.beginPath()
-        ctx.arc(node.x, node.y, 8, 0, Math.PI * 2)
-        ctx.fill()
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.3 + Math.sin(time + i) * 0.2})`;
+        ctx.fill();
 
-        // Core node - small and refined
-        ctx.beginPath()
-        ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)'
-        ctx.fill()
-      })
+        // Reduce connection distance on mobile
+        const maxDistance = isMobile ? 100 : 150;
+        nodes.slice(i + 1).forEach((otherNode) => {
+          const dx = otherNode.x - node.x;
+          const dy = otherNode.y - node.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Clean, simple connections
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x
-          const dy = nodes[i].y - nodes[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < 150) {
-            const opacity = (1 - distance / 150) * 0.12
-            
-            ctx.beginPath()
-            ctx.moveTo(nodes[i].x, nodes[i].y)
-            ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`
-            ctx.lineWidth = 0.8
-            ctx.stroke()
+          if (distance < maxDistance) {
+            ctx.beginPath();
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(otherNode.x, otherNode.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / maxDistance)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
           }
-        }
-      }
+        });
+      });
 
-      animationFrameId = requestAnimationFrame(draw)
-    }
+      animationFrameId = requestAnimationFrame(animate);
+    };
 
-    resize()
-    window.addEventListener('resize', resize)
-    draw()
+    animate();
 
     return () => {
-      window.removeEventListener('resize', resize)
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [])
+      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', checkMobile);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isMobile]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
+      className="fixed inset-0 pointer-events-none opacity-40"
       style={{ zIndex: 0 }}
     />
-  )
+  );
 }
